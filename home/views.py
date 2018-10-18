@@ -1,4 +1,5 @@
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.models import Group
 from django.shortcuts import render
 from django.shortcuts import redirect
 from django.contrib.auth.forms import UserCreationForm
@@ -22,7 +23,7 @@ def login_success(request):
     elif request.user.groups.filter(name="manager").exists():
         return redirect("manager")
     else:
-        return redirect("/")
+        return redirect("/accounts/more")
 
 
 def register(request):
@@ -42,7 +43,15 @@ def register(request):
 
 def registration_details(request):
     if request.method == 'POST':
-        return redirect('/')
+        form = DetailsForm(request.POST)
+        if form.is_valid():
+            user = request.user
+            user.first_name = form.cleaned_data.get('first_name')
+            user.last_name = form.cleaned_data.get('last_name')
+            user.email = form.cleaned_data.get('email_address')
+            new_group, created = Group.objects.get_or_create(name=form.cleaned_data.get('choice'))
+            user.groups.set([new_group])
+            return redirect('/')
     else:
         form = DetailsForm()
         print(form)
