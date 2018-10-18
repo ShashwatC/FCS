@@ -24,7 +24,5 @@ urlpatterns = [
     path('manager/', include('manager.urls')),
     path('sysadmin/', include('sysadmin.urls')),
     path('', include('home.urls')),
-
 ]
 
-#https://www.jetbrains.com/shop/eform/students
