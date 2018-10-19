@@ -53,7 +53,7 @@ def registration_details(request):
             new_group, created = Group.objects.get_or_create(name=form.cleaned_data.get('choice'))
             user.groups.set([new_group])
             user.save()
-            return redirect('login_success')
+            return redirect('/accounts/login_success/')
     else:
         form = DetailsForm()
     return render(request, 'registration/register_more.html',{'form': form})
