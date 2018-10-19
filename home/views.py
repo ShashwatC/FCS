@@ -7,21 +7,22 @@ from home.forms import DetailsForm
 
 # Create your views here.
 
+
 def index(request):
     return render(request, 'home/index.html')
 
 
 def login_success(request):
-    if request.user.groups.filter(name="customer").exists():
-        return redirect("customer")
-    elif request.user.groups.filter(name="merchant").exists():
-        return redirect("merchant")
-    elif request.user.groups.filter(name="sysadmin").exists():
-        return redirect("sysadmin")
-    elif request.user.groups.filter(name="employee").exists():
-        return redirect("employee")
-    elif request.user.groups.filter(name="manager").exists():
-        return redirect("manager")
+    if request.user.groups.filter(name="0").exists():
+        return redirect("/customer")
+    elif request.user.groups.filter(name="1").exists():
+        return redirect("/merchant")
+    elif request.user.groups.filter(name="2").exists():
+        return redirect("/employee")
+    elif request.user.groups.filter(name="3").exists():
+        return redirect("/manager")
+    elif request.user.groups.filter(name="4").exists():
+        return redirect("/sysadmin")
     else:
         return redirect("/accounts/more")
 
@@ -51,8 +52,8 @@ def registration_details(request):
             user.email = form.cleaned_data.get('email_address')
             new_group, created = Group.objects.get_or_create(name=form.cleaned_data.get('choice'))
             user.groups.set([new_group])
-            return redirect('/')
+            user.save()
+            return redirect('login_success')
     else:
         form = DetailsForm()
-        print(form)
-        return render(request, 'registration/register_more.html',{'form' : form})
+    return render(request, 'registration/register_more.html',{'form': form})

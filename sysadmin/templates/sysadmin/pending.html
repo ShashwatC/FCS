@@ -1,0 +1,14 @@
+{% extends "home/base.html" %}
+
+{% block content %}
+    {% for user,group in user_groups %}
+        <b>{{ user }}</b> has group <b>{{ group }}</b>
+        <form method="post">
+            {% csrf_token %}
+            <input type="hidden" name="name" value="{{ user }}" />
+            <input type="hidden" name="group" value="{{ group }}" />
+            <input type="submit" value="Approve">
+        </form>
+
+    {% endfor %}
+{% endblock content %}
