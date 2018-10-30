@@ -2,65 +2,97 @@
 <html>
     <head>
     	{% block head %}
-    	<meta name="viewport" content="width=device-width, initial-scale=1">
-		<style>
-		body {
-		    font-family: "Lato", sans-serif;
-		}
-
-		.sidenav {
-		    height: 100%;
-		    width: 100px;
-		    position: fixed;
-		    z-index: 1;
-		    top: 0;
-		    left: 0;
-		    background-color: #111;
-		    overflow-x: hidden;
-		    padding-top: 20px;
-		}
-
-		.sidenav a {
-		    padding: 6px 8px 6px 16px;
-		    text-decoration: none;
-		    font-size: 25px;
-		    color: #818181;
-		    display: block;
-		}
-
-		.sidenav a:hover {
-		    color: #f1f1f1;
-		}
-
-		.page-header {
-		    margin-left: 160px; 
-		    font-size: 28px;
-		    color: #818181;
-		    padding: 0px 10px;
-		}
-		@media screen and (max-height: 450px) {
-		    .sidenav {padding-top: 15px;}
-		    .sidenav a {font-size: 18px;}
-		}
-		</style>
-
-    	<link rel="stylesheet" href="css/bootstrap.min.css">
-
+    	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+            
     	<div class="page-header">
   			<h1>Secure Banking Incorporated</h1>
-	    <div class="sidenav">
-	  		<a href="">1</a>
-	  		<a href="">2</a>
-	  		<a href="">3</a>
-	  		<a href="">4</a>
-	  		<a href="">5</a>
 		</div>
-		</div>
-        {% endblock head %}
+		<style>
+	    	.wrapper {
+			    display: flex;
+			    width: 100%;
+			}
+
+			#sidebar {
+			    width: 250px;
+			    position: fixed;
+			    top: 0;
+			    left: 0;
+			    height: 100vh;
+			    z-index: 999;
+			    background: #7386D5;
+			    color: #fff;
+			    transition: all 0.3s;
+			}
+	    </style>
+	    
+        {% endblock %}
     </head>
 
     <body>
 	    {% block content %}
-	    {% endblock content %}
+	    <div class="wrapper">
+			    <nav id="sidebar">
+			        <div class="sidebar-header">
+			            <h3>Bootstrap Sidebar</h3>
+			        </div>
+
+			        <ul class="list-unstyled components">
+			            <p>Dummy Heading</p>
+			            <li class="active">
+			                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
+			                <ul class="collapse list-unstyled" id="homeSubmenu">
+			                    <li>
+			                        <a href="#">Home 1</a>
+			                    </li>
+			                    <li>
+			                        <a href="#">Home 2</a>
+			                    </li>
+			                    <li>
+			                        <a href="#">Home 3</a>
+			                    </li>
+			                </ul>
+			            </li>
+			            <li>
+			                <a href="#">About</a>
+			            </li>
+			            <li>
+			                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
+			                <ul class="collapse list-unstyled" id="pageSubmenu">
+			                    <li>
+			                        <a href="#">Page 1</a>
+			                    </li>
+			                    <li>
+			                        <a href="#">Page 2</a>
+			                    </li>
+			                    <li>
+			                        <a href="#">Page 3</a>
+			                    </li>
+			                </ul>
+			            </li>
+			            <li>
+			                <a href="#">Portfolio</a>
+			            </li>
+			            <li>
+			                <a href="#">Contact</a>
+			            </li>
+			        </ul>
+
+			    </nav>
+			    <!-- Page Content -->
+			    <div id="content">
+
+			        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+			            <div class="container-fluid">
+
+			                <button type="button" id="sidebarCollapse" class="btn btn-info">
+			                    <i class="fas fa-align-left"></i>
+			                    <span>Toggle Sidebar</span>
+			                </button>
+			            </div>
+			        </nav>
+			    </div>
+		</div>
+	    {% endblock %}
     </body>  
 </html>
