@@ -41,11 +41,18 @@ def index(request):
     bank_accs = Account.objects.filter(owner=user).values()
     accounts = []
     for acc in bank_accs:
-        print(acc)
         accounts.append((acc['id'],acc['balance']))
-    return render(request, 'customer/index.html',{'acc': accounts})
+
+    name = request.user.first_name + " " + request.user.last_name
+    return render(request, 'customer/index.html',{'acc': accounts, 'name': name})
 
 
 def account(request):
-    #todo
-    return 0
+    user = request.user
+    if check(user):
+        return check(user)
+    name = request.user.first_name + " " + request.user.last_name
+    form = request.POST
+    acc = Account.objects.filter(owner=user).get(id=form['acc_num'])
+
+    return render(request, 'customer/account.html', {'acc': [(acc.id,acc.balance)], 'name': name})
