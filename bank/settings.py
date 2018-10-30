@@ -24,11 +24,12 @@ SECRET_KEY = 'exa!+#96uwc1bj6vudx!e6r)mz($#4_@mj8f7)&80m=1x)h79p'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["127.0.0.1"]
 
 # Application definition
 
 INSTALLED_APPS = [
+    'bank',
     'home',
     'customer',
     'merchant',

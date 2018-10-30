@@ -3,5 +3,8 @@
 {% block content %}
 <p>
 Welcome to my site - customer version
+{% for acc_num,balance in acc %}
+        <p><b>Account number : {{ acc_num }}</b> has balance <b>{{ balance }}</b></p>
+    {% endfor %}
 </p>
 {% endblock content %}
