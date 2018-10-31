@@ -2,7 +2,7 @@ from django.http import Http404
 from django.shortcuts import render, redirect
 from home.choices import R_MAP
 from bank.models import Account
-
+from customer.forms import DepositForm,WithdrawForm,TransferForm
 
 def check(user):
     """
@@ -29,7 +29,6 @@ def check(user):
     if user_group != R_MAP['Customer']:
         raise Http404()
 
-
 # Create your views here.
 def index(request):
     user = request.user
@@ -54,5 +53,35 @@ def account(request):
     name = request.user.first_name + " " + request.user.last_name
     form = request.POST
     acc = Account.objects.filter(owner=user).get(id=form['acc_num'])
+    return render(request, 'customer/account.html', {'acc': [(acc.id,acc.balance)], 'name': name, 'acc_no':acc.id})
 
-    return render(request, 'customer/account.html', {'acc': [(acc.id,acc.balance)], 'name': name})
+def deposit(request):
+    user = request.user
+    if check(user):
+        return check(user)
+    form = request.POST
+    acc = Account.objects.filter(owner=user).get(id=form['acc_num'])
+    print(acc)
+    F = DepositForm({'account_number':str(acc.id)})
+    return render(request, 'customer/deposit.html', {'acc': acc.id, 'form':F})
+
+
+def withdraw(request):
+    user = request.user
+    if check(user):
+        return check(user)
+    form = request.POST
+    acc = Account.objects.filter(owner=user).get(id=form['acc_num'])
+    print(acc)
+    F = WithdrawForm({'account_number':str(acc.id)})
+    return render(request, 'customer/withdraw.html', {'acc': acc.id, 'form':F})
+
+def transfer(request):
+    user = request.user
+    if check(user):
+        return check(user)
+    form = request.POST
+    acc = Account.objects.filter(owner=user).get(id=form['acc_num'])
+    print(acc)
+    F = TransferForm({'account_number':str(acc.id)})
+    return render(request, 'customer/transfer.html', {'acc': acc.id, 'form':F})

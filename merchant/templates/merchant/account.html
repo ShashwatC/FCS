@@ -11,19 +11,11 @@
     <tr>
         <th>Account Number</th>
         <th>Balance</th>
-        <th>View more</th>
     </tr>
     {% for acc_num,balance in acc %}
     <tr>
         <td>{{ acc_num }}</td>
         <td>{{ balance }}</td>
-        <td>
-            <form action="account/" method="post">
-                {% csrf_token %}
-                <input type="hidden" name="acc_num" value="{{ acc_num }}" />
-                <input type="submit" name="submit" value="Click this"/>
-            </form>
-        </td>
     </tr>
     {% endfor %}
     </table>
