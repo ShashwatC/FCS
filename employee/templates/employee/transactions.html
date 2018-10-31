@@ -1,0 +1,42 @@
+{% extends "home/base.html" %}
+
+{% block name %}
+<li><a href="view"> View transactions </a></li>
+<li><a href="approval"> Approval for transactions </a></li>
+<li><a href="removal"> Remove transactions </a></li>
+<li><a href="account_pending"> Approval for accounts </a></li>
+<li><a href="modify"> Modify details </a></li>
+
+
+{% endblock name %}
+
+{% block content %}
+<p>
+
+    <table class="table">
+    <tr>
+        <th>Transaction id</th>
+        <th>S_ID</th>
+        <th>R_ID</th>
+    </tr>
+    {% for tr_i,u_i,r_i in req %}
+    <tr>
+        <td>{{ tr_i }}</td>
+        <td>{{ u_i }}</td>
+        <td>{{ r_i }}</td>
+        <td>
+            <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="tr_id" value="{{ tr_i }}" />
+                <input type="hidden" name="u_id" value="{{ u_i }}" />
+                <input type="hidden" name="r_id" value="{{ r_i }}" />
+                <input type="submit" value="Approve"/>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+    </table>
+
+
+</p>
+{% endblock content %}
