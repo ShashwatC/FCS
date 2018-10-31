@@ -27,7 +27,9 @@ class Logs(models.Model):
 class Transaction(models.Model):
     timestamp = models.DateTimeField()
     sender = models.ForeignKey(User, on_delete="PROTECT", related_name="sender")
+    sender_acc = models.ForeignKey(Account, on_delete="PROTECT", related_name="sender_acc")
     receiver = models.ForeignKey(User, on_delete="PROTECT", related_name="receiver")
+    receiver_acc = models.ForeignKey(Account, on_delete="PROTECT", related_name="receiver_acc")
     amount = models.PositiveIntegerField()
     pending = models.BooleanField(default=True)
 
@@ -38,3 +40,9 @@ class Pending(models.Model):
     email_address = models.EmailField()
     choice = models.IntegerField()
     mobile_number = models.CharField(max_length=100)
+
+
+class access(models.Model):
+    owner = models.ForeignKey(User, on_delete="PROTECT", related_name="is_owner")
+    acc_num = models.ForeignKey(Account, on_delete="PROTECT")
+    access_req = models.ForeignKey(User, on_delete="PROTECT", related_name="wants_access")
