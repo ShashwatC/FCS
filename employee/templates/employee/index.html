@@ -1,16 +1,16 @@
 {% extends "home/base.html" %}
 
 {% block name %}
-    {{ name }}
+
+<li><a href="view"> View transactions </a></li>
+<li><a href="approval"> Approval for transactions </a></li>
+<li><a href="removal"> Remove transactions </a></li>
+<li><a href="account_pending"> Approval for accounts </a></li>
+
+<li><a href="modify"> Modify details </a></li>
+
 {% endblock name %}
 
 {% block content %}
 <h1>Welcome {{ name }} </h1>
-<ul>
-	<li><a href="view"> View transactions </a>
-	<li><a href="approval"> Approval for transactions </a>
-	<li><a href="removal"> Remove transactions </a>
-	<li><a href="modify"> Modify details </a>
-
-<ul>
 {% endblock content %}

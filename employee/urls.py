@@ -9,5 +9,6 @@ urlpatterns = [
     path('approval', views.approval, name = 'approval'),
     path('removal', views.removal, name = 'removal'),
     path('modify', views.modify, name = 'modify'),
+    path('account_pending', views.acc_pen, name = 'acc_pen'),
 ]
 
