@@ -2,20 +2,17 @@ from django.http import Http404
 from django.shortcuts import render, redirect
 from home.choices import R_MAP
 from bank.models import Account
-<<<<<<< HEAD
-from customer.forms import DepositForm,WithdrawForm,TransferForm
-=======
+
+from customer.forms import DepositForm, WithdrawForm, TransferForm
 from .forms import DetailsForm
 
->>>>>>> ea92b1a00b077a027c2a9fd6a0b991e4fe74f589
 
 def check(user):
-
     if user.groups.count() == 0:
         return redirect("/accounts/login")
 
     if user.groups.count() == 1:
-        raise Http404()
+        return redirect("/accounts/pending")
 
     user_group = user.groups.values('name')
 
@@ -24,26 +21,23 @@ def check(user):
         if int(u['name']) == int(R_MAP['Customer']):
             c = 1
         print(c)
-        
-    if(not c):
+
+    if not c:
         raise Http404()
 
-<<<<<<< HEAD
-# Create your views here.
-=======
->>>>>>> ea92b1a00b077a027c2a9fd6a0b991e4fe74f589
+
 def index(request):
     user = request.user
     if check(user):
         return check(user)
-    bank_accs = Account.objects.filter(owner=user).values()
+    bank_acct = Account.objects.filter(owner=user).values()
     accounts = []
-    for acc in bank_accs:
-        if(acc['pending']==False):
-            accounts.append((acc['id'],acc['balance']))
+    for acc in bank_acct:
+        if acc['pending']:
+            accounts.append((acc['id'], acc['balance']))
 
     name = request.user.first_name + " " + request.user.last_name
-    return render(request, 'customer/index.html',{'acc': accounts, 'name': name})
+    return render(request, 'customer/index.html', {'acc': accounts, 'name': name})
 
 
 def account(request):
@@ -52,8 +46,9 @@ def account(request):
         return check(user)
     name = request.user.first_name + " " + request.user.last_name
     form = request.POST
-    acc = Account.objects.filter(owner=user).get(id=form['acc_num'])
-    return render(request, 'customer/account.html', {'acc': [(acc.id,acc.balance)], 'name': name, 'acc_no':acc.id})
+    acc = Account.objects.filter(owner=user).filter(pending=False).get(id=form['acc_num'])
+    return render(request, 'customer/account.html', {'acc': [(acc.id, acc.balance)], 'name': name, 'acc_no': acc.id})
+
 
 def deposit(request):
     user = request.user
@@ -62,8 +57,8 @@ def deposit(request):
     form = request.POST
     acc = Account.objects.filter(owner=user).get(id=form['acc_num'])
     print(acc)
-    F = DepositForm({'account_number':str(acc.id)})
-    return render(request, 'customer/deposit.html', {'acc': acc.id, 'form':F})
+    F = DepositForm({'account_number': str(acc.id)})
+    return render(request, 'customer/deposit.html', {'acc': acc.id, 'form': F})
 
 
 def withdraw(request):
@@ -73,10 +68,10 @@ def withdraw(request):
     form = request.POST
     acc = Account.objects.filter(owner=user).get(id=form['acc_num'])
     print(acc)
-    F = WithdrawForm({'account_number':str(acc.id)})
-    return render(request, 'customer/withdraw.html', {'acc': acc.id, 'form':F})
+    form = WithdrawForm({'account_number': str(acc.id)})
+    return render(request, 'customer/withdraw.html', {'acc': acc.id, 'form': form})
 
-<<<<<<< HEAD
+
 def transfer(request):
     user = request.user
     if check(user):
@@ -84,13 +79,13 @@ def transfer(request):
     form = request.POST
     acc = Account.objects.filter(owner=user).get(id=form['acc_num'])
     print(acc)
-    F = TransferForm({'account_number':str(acc.id)})
-    return render(request, 'customer/transfer.html', {'acc': acc.id, 'form':F})
-=======
-    return render(request, 'customer/account.html', {'acc': [(acc.id,acc.balance)], 'name': name})
+    F = TransferForm({'account_number': str(acc.id)})
+    return render(request, 'customer/transfer.html', {'acc': acc.id, 'form': F})
+
 
 def edit_prof(request):
     return 0
+
 
 def create_acc(request):
     if request.method == 'POST':
@@ -98,13 +93,12 @@ def create_acc(request):
         if form.is_valid():
             init_balance = int(form.cleaned_data.get('initial_balance'))
             user = request.user
-            if(init_balance<0):
+            if init_balance < 0:
                 print("to do")
-            new_account = Account.objects.create(balance = init_balance, owner = user)
+            new_account = Account.objects.create(balance=init_balance, owner=user)
             print("this account in being saved")
             new_account.save()
-            return render(request,'customer/account_created.html')
+            return render(request, 'customer/account_created.html')
     else:
         form = DetailsForm()
-    return render(request, 'customer/create.html',{'form':form})
->>>>>>> ea92b1a00b077a027c2a9fd6a0b991e4fe74f589
+    return render(request, 'customer/create.html', {'form': form})

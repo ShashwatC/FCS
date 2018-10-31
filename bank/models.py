@@ -12,6 +12,7 @@ class Account(models.Model):
     acc_num = models.UUIDField(unique=True, editable=False, default=uuid.uuid4)
     owner = models.ForeignKey(User, on_delete="PROTECT")
     balance = models.FloatField()
+    pending = models.BooleanField(default=True)
 
 
 class Profile(models.Model):

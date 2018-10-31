@@ -12,6 +12,9 @@ def index(request):
     return render(request, 'home/index.html')
 
 
+def pending(request):
+    return render(request, 'registration/pending.html')
+
 def login_success(request):
     if request.user.groups.filter(name="0").exists():
         return redirect("/customer")
