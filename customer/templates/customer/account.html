@@ -19,7 +19,20 @@
     </tr>
     {% endfor %}
     </table>
-
-
+    <form action="deposit/" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="acc_num" value="{{ acc_no }}" />
+            <input type="submit" name="submit" value="Deposit"/>
+    </form>
+    <form action="transfer/" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="acc_num" value="{{ acc_no }}" />
+            <input type="submit" name="submit" value="Transfer"/>
+    </form>
+    <form action="withdraw/" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="acc_num" value="{{ acc_no }}" />
+            <input type="submit" name="submit" value="Withdraw"/>
+    </form>
 </p>
 {% endblock content %}

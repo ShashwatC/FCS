@@ -13,12 +13,15 @@ def check(user):
     if user.groups.count() == 1:
         raise Http404()
 
-    user_group = int(user.groups.values('name').first()['name'])
+    user_group = user.groups.values('name')
+    c = 0
+    for u in user_group:
+        if int(u['name']) == int(R_MAP['Employee']):
+            c = 1
+        print(c)
 
-    if user_group != R_MAP['Employee']:
-        print(user_group)
+    if(not c):
         raise Http404()
-
 
 def index(request):
     name = request.user.first_name + " " + request.user.last_name
@@ -79,8 +82,31 @@ def vew(request):
         reques.append((acc['trans_id'],acc['u_id'],acc['r_id']))
 
     name = request.user.first_name + " " + request.user.last_name
+    print ()
     return render(request, 'employee/view.html',{'req': reques,'name' : name})
 
 def modify(request):
     name = request.user.first_name + " " + request.user.last_name
     return render(request, 'employee/index.html',{'name' : name})
+
+def acc_pen(request):
+    if request.method == 'POST':
+        form = request.POST
+
+        acc = Account.objects.get(pk=form['pk'])
+        acc.pending = False
+        acc.save()
+        
+    user = request.user
+    if check(user):
+        return check(user)
+    reqs = Account.objects.all()
+    reques = []
+    print(reqs)
+    for acc in reqs:
+        if(acc.pending==True):
+            print(acc.pk,acc.balance)
+            reques.append((acc.pk,acc.balance))
+
+    name = request.user.first_name + " " + request.user.last_name
+    return render(request, 'employee/account_pending.html',{'req': reques,'name' : name})

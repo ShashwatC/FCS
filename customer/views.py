@@ -2,46 +2,45 @@ from django.http import Http404
 from django.shortcuts import render, redirect
 from home.choices import R_MAP
 from bank.models import Account
+<<<<<<< HEAD
+from customer.forms import DepositForm,WithdrawForm,TransferForm
+=======
+from .forms import DetailsForm
 
+>>>>>>> ea92b1a00b077a027c2a9fd6a0b991e4fe74f589
 
 def check(user):
-    """
-    Functionality:
-        If user is not logged in, redirect him to log in page
-        If user is trying to access a page he shouldn't access, don't let him
-    Behaviour:
-        Returns redirection if user not logged in
-        Raises 404 error if logged in but wrong page
-        Returns None if everything is okay
-    How to user:
-        if check(user):
-            return check(user)
-        # If execution is here then user is good to go, write your code now
-    """
+
     if user.groups.count() == 0:
         return redirect("/accounts/login")
 
     if user.groups.count() == 1:
         raise Http404()
 
-    user_group = int(user.groups.values('name').first()['name'])
+    user_group = user.groups.values('name')
 
-    if user_group != R_MAP['Customer']:
+    c = 0
+    for u in user_group:
+        if int(u['name']) == int(R_MAP['Customer']):
+            c = 1
+        print(c)
+        
+    if(not c):
         raise Http404()
 
-
+<<<<<<< HEAD
 # Create your views here.
+=======
+>>>>>>> ea92b1a00b077a027c2a9fd6a0b991e4fe74f589
 def index(request):
     user = request.user
     if check(user):
         return check(user)
-
-    # Account.objects.filter is when multiple objects are returned
-    # Account.objects.get is for when single object is returned
     bank_accs = Account.objects.filter(owner=user).values()
     accounts = []
     for acc in bank_accs:
-        accounts.append((acc['id'],acc['balance']))
+        if(acc['pending']==False):
+            accounts.append((acc['id'],acc['balance']))
 
     name = request.user.first_name + " " + request.user.last_name
     return render(request, 'customer/index.html',{'acc': accounts, 'name': name})
@@ -54,5 +53,58 @@ def account(request):
     name = request.user.first_name + " " + request.user.last_name
     form = request.POST
     acc = Account.objects.filter(owner=user).get(id=form['acc_num'])
+    return render(request, 'customer/account.html', {'acc': [(acc.id,acc.balance)], 'name': name, 'acc_no':acc.id})
 
+def deposit(request):
+    user = request.user
+    if check(user):
+        return check(user)
+    form = request.POST
+    acc = Account.objects.filter(owner=user).get(id=form['acc_num'])
+    print(acc)
+    F = DepositForm({'account_number':str(acc.id)})
+    return render(request, 'customer/deposit.html', {'acc': acc.id, 'form':F})
+
+
+def withdraw(request):
+    user = request.user
+    if check(user):
+        return check(user)
+    form = request.POST
+    acc = Account.objects.filter(owner=user).get(id=form['acc_num'])
+    print(acc)
+    F = WithdrawForm({'account_number':str(acc.id)})
+    return render(request, 'customer/withdraw.html', {'acc': acc.id, 'form':F})
+
+<<<<<<< HEAD
+def transfer(request):
+    user = request.user
+    if check(user):
+        return check(user)
+    form = request.POST
+    acc = Account.objects.filter(owner=user).get(id=form['acc_num'])
+    print(acc)
+    F = TransferForm({'account_number':str(acc.id)})
+    return render(request, 'customer/transfer.html', {'acc': acc.id, 'form':F})
+=======
     return render(request, 'customer/account.html', {'acc': [(acc.id,acc.balance)], 'name': name})
+
+def edit_prof(request):
+    return 0
+
+def create_acc(request):
+    if request.method == 'POST':
+        form = DetailsForm(request.POST)
+        if form.is_valid():
+            init_balance = int(form.cleaned_data.get('initial_balance'))
+            user = request.user
+            if(init_balance<0):
+                print("to do")
+            new_account = Account.objects.create(balance = init_balance, owner = user)
+            print("this account in being saved")
+            new_account.save()
+            return render(request,'customer/account_created.html')
+    else:
+        form = DetailsForm()
+    return render(request, 'customer/create.html',{'form':form})
+>>>>>>> ea92b1a00b077a027c2a9fd6a0b991e4fe74f589

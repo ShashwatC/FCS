@@ -19,11 +19,18 @@
         <th>S_ID</th>
         <th>R_ID</th>
     </tr>
-    {% for tr_i,u_i,r_i in req %}
+    {% for pk,bal in req %}
     <tr>
-        <td>{{ tr_i }}</td>
-        <td>{{ u_i }}</td>
-        <td>{{ r_i }}</td>
+        <td>{{ pk }}</td>
+        <td>{{ bal }}</td>
+        <td>
+            <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="pk" value="{{ pk }}" />
+                <input type="hidden" name="bal" value="{{ bal }}" />
+                <input type="submit" value="Approve"/>
+            </form>
+        </td>
     </tr>
     {% endfor %}
     </table>
