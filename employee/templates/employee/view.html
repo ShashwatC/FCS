@@ -1,0 +1,27 @@
+{% extends "home/base.html" %}
+
+{% block name %}
+    {{ name }}
+{% endblock name %}
+
+{% block content %}
+<p>
+
+    <table class="table">
+    <tr>
+        <th>Transaction id</th>
+        <th>S_ID</th>
+        <th>R_ID</th>
+    </tr>
+    {% for tr_i,u_i,r_i in req %}
+    <tr>
+        <td>{{ tr_i }}</td>
+        <td>{{ u_i }}</td>
+        <td>{{ r_i }}</td>
+    </tr>
+    {% endfor %}
+    </table>
+
+
+</p>
+{% endblock content %}

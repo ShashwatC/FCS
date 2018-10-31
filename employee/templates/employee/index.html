@@ -1,7 +1,16 @@
 {% extends "home/base.html" %}
 
+{% block name %}
+    {{ name }}
+{% endblock name %}
+
 {% block content %}
-<p>
-Welcome to my site - employee version
-</p>
+<h1>Welcome {{ name }} </h1>
+<ul>
+	<li><a href="view"> View transactions </a>
+	<li><a href="approval"> Approval for transactions </a>
+	<li><a href="removal"> Remove transactions </a>
+	<li><a href="modify"> Modify details </a>
+
+<ul>
 {% endblock content %}
