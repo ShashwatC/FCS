@@ -109,8 +109,8 @@ def acc_pen(request):
     print(reqs)
     for acc in reqs:
         if acc.pending:
-            print(acc.pk, acc.balance)
-            reques.append((acc.pk, acc.balance))
+            print(acc.acc_num, acc.balance)
+            reques.append((acc.acc_num, acc.balance))
 
     name = request.user.first_name + " " + request.user.last_name
     return render(request, 'employee/account_pending.html', {'req': reques, 'name': name})

@@ -4,6 +4,7 @@ from django.shortcuts import render
 from django.shortcuts import redirect
 from django.contrib.auth.forms import UserCreationForm
 from home.forms import DetailsForm
+from bank.models import Profile
 
 # Create your views here.
 
@@ -14,6 +15,7 @@ def index(request):
 
 def pending(request):
     return render(request, 'registration/pending.html')
+
 
 def login_success(request):
     if request.user.groups.filter(name="0").exists():
@@ -53,9 +55,12 @@ def registration_details(request):
             user.first_name = form.cleaned_data.get('first_name')
             user.last_name = form.cleaned_data.get('last_name')
             user.email = form.cleaned_data.get('email_address')
+            mobile_number = form.cleaned_data.get('mobile_number')
             new_group, created = Group.objects.get_or_create(name=form.cleaned_data.get('choice'))
             user.groups.set([new_group])
             user.save()
+            profile = Profile(user=user, mobile_number=mobile_number, private_key="")
+            profile.save()
             return redirect('/accounts/login_success/')
     else:
         form = DetailsForm()

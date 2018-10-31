@@ -16,6 +16,7 @@ class Account(models.Model):
 
 
 class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     mobile_number = models.CharField(max_length=15)
     private_key = models.CharField(max_length=512)
 

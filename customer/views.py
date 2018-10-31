@@ -33,8 +33,8 @@ def index(request):
     bank_acct = Account.objects.filter(owner=user).values()
     accounts = []
     for acc in bank_acct:
-        if acc['pending']:
-            accounts.append((acc['id'], acc['balance']))
+        if not acc['pending']:
+            accounts.append((acc['acc_num'], acc['balance']))
 
     name = request.user.first_name + " " + request.user.last_name
     return render(request, 'customer/index.html', {'acc': accounts, 'name': name})
@@ -46,8 +46,9 @@ def account(request):
         return check(user)
     name = request.user.first_name + " " + request.user.last_name
     form = request.POST
-    acc = Account.objects.filter(owner=user).filter(pending=False).get(id=form['acc_num'])
-    return render(request, 'customer/account.html', {'acc': [(acc.id, acc.balance)], 'name': name, 'acc_no': acc.id})
+    acc = Account.objects.filter(owner=user).filter(pending=False).get(acc_num=form['acc_num'])
+    return render(request, 'customer/account.html',
+                  {'acc': [(acc.acc_num, acc.balance)], 'name': name, 'acc_no': acc.acc_num})
 
 
 def deposit(request):
@@ -55,10 +56,10 @@ def deposit(request):
     if check(user):
         return check(user)
     form = request.POST
-    acc = Account.objects.filter(owner=user).get(id=form['acc_num'])
+    acc = Account.objects.filter(owner=user).get(acc_num=form['acc_num'])
     print(acc)
-    F = DepositForm({'account_number': str(acc.id)})
-    return render(request, 'customer/deposit.html', {'acc': acc.id, 'form': F})
+    F = DepositForm({'account_number': str(acc.acc_num)})
+    return render(request, 'customer/deposit.html', {'acc': acc.acc_num, 'form': F})
 
 
 def withdraw(request):
@@ -66,10 +67,10 @@ def withdraw(request):
     if check(user):
         return check(user)
     form = request.POST
-    acc = Account.objects.filter(owner=user).get(id=form['acc_num'])
+    acc = Account.objects.filter(owner=user).get(acc_num=form['acc_num'])
     print(acc)
-    form = WithdrawForm({'account_number': str(acc.id)})
-    return render(request, 'customer/withdraw.html', {'acc': acc.id, 'form': form})
+    form = WithdrawForm({'account_number': str(acc.acc_num)})
+    return render(request, 'customer/withdraw.html', {'acc': acc.acc_num, 'form': form})
 
 
 def transfer(request):
@@ -77,10 +78,10 @@ def transfer(request):
     if check(user):
         return check(user)
     form = request.POST
-    acc = Account.objects.filter(owner=user).get(id=form['acc_num'])
+    acc = Account.objects.filter(owner=user).get(acc_num=form['acc_num'])
     print(acc)
-    F = TransferForm({'account_number': str(acc.id)})
-    return render(request, 'customer/transfer.html', {'acc': acc.id, 'form': F})
+    F = TransferForm({'account_number': str(acc.acc_num)})
+    return render(request, 'customer/transfer.html', {'acc': acc.acc_num, 'form': F})
 
 
 def edit_prof(request):

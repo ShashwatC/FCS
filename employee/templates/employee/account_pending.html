@@ -15,13 +15,14 @@
 
     <table class="table">
     <tr>
-        <th>Transaction id</th>
-        <th>S_ID</th>
-        <th>R_ID</th>
+        <th>Account Number</th>
+        <th>Initial Balance</th>
+        <th>Approve</th>
+        <th>Reject</th>
     </tr>
-    {% for pk,bal in req %}
+    {% for acc_num,bal in req %}
     <tr>
-        <td>{{ pk }}</td>
+        <td>{{ acc_num }}</td>
         <td>{{ bal }}</td>
         <td>
             <form method="post">
@@ -31,6 +32,15 @@
                 <input type="submit" value="Approve"/>
             </form>
         </td>
+        <td>
+            <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="pk" value="{{ pk }}" />
+                <input type="hidden" name="bal" value="{{ bal }}" />
+                <input type="submit" value="Approve"/>
+            </form>
+        </td>
+
     </tr>
     {% endfor %}
     </table>
