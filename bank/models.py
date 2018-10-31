@@ -42,7 +42,7 @@ class Pending(models.Model):
     mobile_number = models.CharField(max_length=100)
 
 
-class access(models.Model):
+class Access(models.Model):
     owner = models.ForeignKey(User, on_delete="PROTECT", related_name="is_owner")
     acc_num = models.ForeignKey(Account, on_delete="PROTECT")
     access_req = models.ForeignKey(User, on_delete="PROTECT", related_name="wants_access")
