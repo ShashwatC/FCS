@@ -20,18 +20,19 @@ def check(user):
             c = 1
         print(c)
 
-    if(not c):
+    if not c:
         raise Http404()
+
 
 def index(request):
     name = request.user.first_name + " " + request.user.last_name
-    return render(request, 'employee/index.html',{'name' : name})
+    return render(request, 'employee/index.html', {'name': name})
+
 
 def approval(request):
-    
     if request.method == 'POST':
         form = request.POST
-        
+
         user1 = User.objects.get(username=form['u_id'])
         user2 = User.objects.get(username=form['r_id'])
         acc1 = Account.objects.get(owner=user1)
@@ -40,8 +41,8 @@ def approval(request):
         acc1.balance = 0
         acc1.save()
         acc2.save()
-        Trans.objects.filter(trans_id = form['tr_id']).delete()
-    
+        Trans.objects.filter(trans_id=form['tr_id']).delete()
+
     user = request.user
     if check(user):
         return check(user)
@@ -49,45 +50,48 @@ def approval(request):
     reques = []
     for acc in reqs:
         print(acc)
-        reques.append((acc['trans_id'],acc['u_id'],acc['r_id']))
+        reques.append((acc['trans_id'], acc['u_id'], acc['r_id']))
 
     name = request.user.first_name + " " + request.user.last_name
-    return render(request, 'employee/transactions.html',{'req': reques,'name' : name})
+    return render(request, 'employee/transactions.html', {'req': reques, 'name': name})
+
 
 def removal(request):
     if request.method == 'POST':
         form = request.POST
-        Trans.objects.filter(trans_id = form['tr_id']).delete()
-    
+        Trans.objects.filter(trans_id=form['tr_id']).delete()
+
     user = request.user
     if check(user):
         return check(user)
     reqs = Trans.objects.filter(owner=user).values()
     reques = []
     for acc in reqs:
-        reques.append((acc['trans_id'],acc['u_id'],acc['r_id']))
+        reques.append((acc['trans_id'], acc['u_id'], acc['r_id']))
 
     name = request.user.first_name + " " + request.user.last_name
-    return render(request, 'employee/removal.html',{'req': reques,'name' : name})
+    return render(request, 'employee/removal.html', {'req': reques, 'name': name})
+
 
 def vew(request):
-    
     user = request.user
     if check(user):
         return check(user)
-    
+
     reqs = Trans.objects.filter(owner=user).values()
     reques = []
     for acc in reqs:
-        reques.append((acc['trans_id'],acc['u_id'],acc['r_id']))
+        reques.append((acc['trans_id'], acc['u_id'], acc['r_id']))
 
     name = request.user.first_name + " " + request.user.last_name
-    print ()
-    return render(request, 'employee/view.html',{'req': reques,'name' : name})
+    print()
+    return render(request, 'employee/view.html', {'req': reques, 'name': name})
+
 
 def modify(request):
     name = request.user.first_name + " " + request.user.last_name
-    return render(request, 'employee/index.html',{'name' : name})
+    return render(request, 'employee/index.html', {'name': name})
+
 
 def acc_pen(request):
     if request.method == 'POST':
@@ -96,7 +100,7 @@ def acc_pen(request):
         acc = Account.objects.get(pk=form['pk'])
         acc.pending = False
         acc.save()
-        
+
     user = request.user
     if check(user):
         return check(user)
@@ -104,9 +108,9 @@ def acc_pen(request):
     reques = []
     print(reqs)
     for acc in reqs:
-        if(acc.pending==True):
-            print(acc.pk,acc.balance)
-            reques.append((acc.pk,acc.balance))
+        if acc.pending:
+            print(acc.pk, acc.balance)
+            reques.append((acc.pk, acc.balance))
 
     name = request.user.first_name + " " + request.user.last_name
-    return render(request, 'employee/account_pending.html',{'req': reques,'name' : name})
+    return render(request, 'employee/account_pending.html', {'req': reques, 'name': name})

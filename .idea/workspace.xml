@@ -2,38 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e2b53bc9-a0ac-4d79-9549-ed6f554933bf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/bank/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/bank/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bank/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/bank/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/customer/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/customer/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/customer/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/employee/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/employee/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/employee/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/employee/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/employee/migrations/0002_trans_owner.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/employee/migrations/0003_auto_20181031_0106.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/home/templates/home/css/bootstrap-grid.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/home/templates/home/css/bootstrap-grid.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/home/templates/home/css/bootstrap-grid.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/home/templates/home/css/bootstrap-grid.min.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/home/templates/home/css/bootstrap-reboot.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/home/templates/home/css/bootstrap-reboot.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/home/templates/home/css/bootstrap-reboot.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/home/templates/home/css/bootstrap-reboot.min.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/home/templates/home/css/bootstrap.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/home/templates/home/css/bootstrap.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/home/templates/home/css/bootstrap.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/home/templates/home/css/bootstrap.min.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/home/templates/home/js/bootstrap.bundle.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/home/templates/home/js/bootstrap.bundle.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/home/templates/home/js/bootstrap.bundle.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/home/templates/home/js/bootstrap.bundle.min.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/home/templates/home/js/bootstrap.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/home/templates/home/js/bootstrap.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/home/templates/home/js/bootstrap.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/home/templates/home/js/bootstrap.min.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/home/templates/home/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/home/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/home/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/home/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/home/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/employee/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/employee/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -59,7 +28,7 @@
         <counts>
           <entry key="css" value="1" />
           <entry key="html" value="59" />
-          <entry key="py" value="57" />
+          <entry key="py" value="58" />
           <entry key="txt" value="2" />
         </counts>
       </usages-collector>
@@ -68,14 +37,14 @@
           <entry key="CSS" value="1" />
           <entry key="HTML" value="59" />
           <entry key="PLAIN_TEXT" value="2" />
-          <entry key="Python" value="57" />
+          <entry key="Python" value="58" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="css" value="1" />
           <entry key="html" value="2460" />
-          <entry key="py" value="6018" />
+          <entry key="py" value="6019" />
           <entry key="txt" value="60" />
         </counts>
       </usages-collector>
@@ -84,7 +53,7 @@
           <entry key="CSS" value="1" />
           <entry key="HTML" value="2460" />
           <entry key="PLAIN_TEXT" value="60" />
-          <entry key="Python" value="6018" />
+          <entry key="Python" value="6019" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts" />
@@ -93,11 +62,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/customer/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="94">
-              <caret line="69" column="14" lean-forward="true" selection-start-line="69" selection-start-column="14" selection-end-line="69" selection-end-column="14" />
+            <state relative-caret-position="-67">
+              <caret line="83" lean-forward="true" selection-start-line="83" selection-end-line="83" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
@@ -133,8 +102,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bank/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="202">
-              <caret line="14" column="46" selection-start-line="14" selection-start-column="46" selection-end-line="14" selection-end-column="46" />
+            <state relative-caret-position="405">
+              <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
                 <marker date="1541012531972" expanded="true" signature="504:509" ph="..." />
@@ -142,6 +111,18 @@
                 <marker date="1541012531972" expanded="true" signature="756:757" ph="..." />
                 <marker date="1541012531972" expanded="true" signature="1271:1272" ph="..." />
                 <marker date="1541012531972" expanded="true" signature="1528:1533" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/employee/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1650">
+              <caret line="110" column="22" selection-start-line="110" selection-start-column="22" selection-end-line="110" selection-end-column="22" />
+              <folding>
+                <element signature="e#0#31#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -182,7 +163,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/employee/views.py" />
         <option value="$PROJECT_DIR$/employee/templates/employee/index.html" />
         <option value="$PROJECT_DIR$/manager/templates/manager/index.html" />
         <option value="$PROJECT_DIR$/manager/views.py" />
@@ -220,6 +200,7 @@
         <option value="$PROJECT_DIR$/home/templates/registration/pending.html" />
         <option value="$PROJECT_DIR$/bank/models.py" />
         <option value="$PROJECT_DIR$/customer/views.py" />
+        <option value="$PROJECT_DIR$/employee/views.py" />
       </list>
     </option>
   </component>
@@ -273,27 +254,20 @@
             <path>
               <item name="FCS" type="b2602c69:ProjectViewProjectNode" />
               <item name="FCS" type="462c0819:PsiDirectoryNode" />
-              <item name="home" type="462c0819:PsiDirectoryNode" />
+              <item name="employee" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="FCS" type="b2602c69:ProjectViewProjectNode" />
               <item name="FCS" type="462c0819:PsiDirectoryNode" />
-              <item name="home" type="462c0819:PsiDirectoryNode" />
+              <item name="employee" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="FCS" type="b2602c69:ProjectViewProjectNode" />
               <item name="FCS" type="462c0819:PsiDirectoryNode" />
-              <item name="home" type="462c0819:PsiDirectoryNode" />
+              <item name="employee" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="home" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FCS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FCS" type="462c0819:PsiDirectoryNode" />
-              <item name="home" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="registration" type="462c0819:PsiDirectoryNode" />
+              <item name="employee" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="FCS" type="b2602c69:ProjectViewProjectNode" />
@@ -379,12 +353,12 @@
     <frame x="10" y="43" width="1260" height="670" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27011493" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27011493" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32871974" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32871974" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -416,13 +390,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="4" column="35" selection-start-line="4" selection-start-column="35" selection-end-line="4" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/employee/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="49" lean-forward="true" selection-start-line="4" selection-start-column="49" selection-end-line="4" selection-end-column="49" />
         </state>
       </provider>
     </entry>
@@ -654,21 +621,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bank/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="14" column="46" selection-start-line="14" selection-start-column="46" selection-end-line="14" selection-end-column="46" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-            <marker date="1541012531972" expanded="true" signature="504:509" ph="..." />
-            <marker date="1541012531972" expanded="true" signature="635:636" ph="..." />
-            <marker date="1541012531972" expanded="true" signature="756:757" ph="..." />
-            <marker date="1541012531972" expanded="true" signature="1271:1272" ph="..." />
-            <marker date="1541012531972" expanded="true" signature="1528:1533" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/customer/forms.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="248">
@@ -733,8 +685,33 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/customer/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="94">
-          <caret line="69" column="14" lean-forward="true" selection-start-line="69" selection-start-column="14" selection-end-line="69" selection-end-column="14" />
+        <state relative-caret-position="-67">
+          <caret line="83" lean-forward="true" selection-start-line="83" selection-end-line="83" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bank/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+            <marker date="1541012531972" expanded="true" signature="504:509" ph="..." />
+            <marker date="1541012531972" expanded="true" signature="635:636" ph="..." />
+            <marker date="1541012531972" expanded="true" signature="756:757" ph="..." />
+            <marker date="1541012531972" expanded="true" signature="1271:1272" ph="..." />
+            <marker date="1541012531972" expanded="true" signature="1528:1533" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/employee/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1650">
+          <caret line="110" column="22" selection-start-line="110" selection-start-column="22" selection-end-line="110" selection-end-column="22" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
           </folding>
