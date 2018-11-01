@@ -49,6 +49,7 @@ class Withdraw(models.Model):
 
 
 class Pending(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE,null = True)
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     email_address = models.EmailField()
