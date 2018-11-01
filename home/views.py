@@ -63,8 +63,10 @@ def registration_details(request):
             return redirect('/accounts/login_success/')
     else:
         user = request.user
-        private_key_str, public_key_str = get_pair()
+        public_key_str = "This is the not the first time you're accessing the page, your public key was given" \
+                         " to you the first time"
         if Profile.objects.filter(user=user).count() == 0:
+            private_key_str, public_key_str = get_pair()
             profile = Profile(user=user, mobile_number="", private_key=private_key_str)
             profile.save()
         form = DetailsForm({'public_key':public_key_str})

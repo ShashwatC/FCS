@@ -4,7 +4,9 @@
 
 
 {% block content %}
-  <h2>Please provide these additional details to complete your registration</h2>
+  <h3>Due to this very high value transaction, you will need to prove possession of the key you were given at sign up</h3>
+    To do that, you need to encrypt your payment amount with your private key using RSA with OAEP (SHA1 And MGF1 Padding)
+
   <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
