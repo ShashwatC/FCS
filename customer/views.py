@@ -73,6 +73,7 @@ def deposit_comp(request):
     if not form.is_valid():
         return render(request, 'customer/deposit.html', {'acc': acc1.id, 'form': form})
 
+    print(bal)
     new_deposit = Deposit.objects.create(owner=user1, owner_acc=acc1, amount=bal, pending=True)
     new_deposit.save()
 
