@@ -64,3 +64,6 @@ class ProfileForm(forms.Form):
     last_name = forms.CharField(max_length=100)
     email_address = forms.EmailField()
     mobile_number = forms.CharField(max_length=100)
+
+class OTPForm(forms.Form):
+    otp = forms.CharField(max_length=6,min_length=6)

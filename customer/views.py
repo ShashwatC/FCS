@@ -1,11 +1,18 @@
 from django.http import Http404
 from django.shortcuts import render, redirect
 from home.choices import R_MAP
-from bank.models import Account, Transaction, Deposit, Withdraw, Profile, Pending
-
-from customer.forms import DepositForm, WithdrawForm, TransferForm, ProfileForm
+from bank.models import Account, Transaction, Deposit, Withdraw, Profile, Pending, OTPInfo
+import math, random
+from customer.forms import DepositForm, WithdrawForm, TransferForm, ProfileForm, OTPForm
 from .forms import DetailsForm
+from django.core.mail import send_mail
 
+def generateOTP(len) : 
+    digits = "0123456789"
+    OTP = "" 
+    for i in range(len) : 
+        OTP += digits[math.floor(random.random() * 10)] 
+    return OTP
 
 def check(user):
     if user.groups.count() == 0:
@@ -172,16 +179,43 @@ def transfer_comp(request):
         acc1.save()
         acc2.save()
     elif bal <= 10000000:
+        OTP = generateOTP(6)
+        message = "OTP: " + OTP
+        send_mail('SBI: Transaction OTP', message, 'securebankingincorporated@gmail.com', [user1.email])
         new_transaction = Transaction.objects.create(sender=user1, sender_acc=acc1, receiver=user2, receiver_acc=acc2,
                                                      amount=bal, pending=True)
         new_transaction.save()
         cond = 1
+        otp_rec = OTPInfo.objects.create(trans_id=new_transaction.id,otp=OTP)
+        otp_rec.save()
+        cond = 1
+        Form = OTPForm()
+        return render(request, 'customer/verify.html',{'trans_id':new_transaction.id,'form':Form})
+
     else:
         return render(request, 'customer/pki.html', {'form': form})
 
     return render(request, 'customer/trans_pend.html', {'cond': cond})
 
-
+def otp_verify(request):
+    user = request.user
+    if check(user):
+        return check(user)
+    form = request.POST
+    ID = int(form['trans_id'])
+    OTP = OTPForm(request.POST)
+    Original = OTPInfo.objects.get(pk=ID)
+    p=0
+    if(OTP['otp'].data == Original.otp):
+        p=1
+        Original.approved=True
+        Original.save()
+    else:
+        p=0
+        Original.delete()
+    print(p)
+    return render(request, 'customer/otp_pend.html',{'cond':p})
+    
 def edit_prof(request):
     user = request.user
     if check(user):

@@ -63,3 +63,8 @@ class Access(models.Model):
     owner = models.ForeignKey(User, on_delete="PROTECT", related_name="is_owner")
     acc_num = models.ForeignKey(Account, on_delete="PROTECT")
     access_req = models.ForeignKey(User, on_delete="PROTECT", related_name="wants_access")
+
+class OTPInfo(models.Model):
+    trans_id = models.IntegerField(primary_key = True)
+    otp = models.CharField(max_length = 6)
+    approved = models.BooleanField(default=False)

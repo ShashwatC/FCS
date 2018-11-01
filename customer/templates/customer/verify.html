@@ -1,0 +1,21 @@
+{% extends "home/base.html" %}
+
+{% block name %}
+<li><a href = "/customer">Home</a></li>
+<li><a href = "create">Create Account</a></li>
+<li><a href = "edit_prof">Edit Profile</a></li>
+
+{% endblock name %}
+
+{% block content %}
+<p align="midlle">
+    
+    <form action="verify/" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}            
+        <input type="hidden" name="trans_id" value="{{ trans_id }}" />
+        <input type="submit" name="submit" value="Check"/>
+    </form>
+
+</p>
+{% endblock content %}

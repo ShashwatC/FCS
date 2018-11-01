@@ -14,5 +14,7 @@ urlpatterns = [
     path('create',views.create_acc, name='create'),
     path('edit_prof',views.edit_prof, name='edit_prof'),
     path('merchanttransfer',views.transfer2,name='transfer2'),
+    path('verify/',views.otp_verify, name='otp_verify'),
+
 ]
 
