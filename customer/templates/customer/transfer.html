@@ -1,27 +1,20 @@
 {% extends "home/base.html" %}
 
 {% block name %}
-    {{ name }}
+<li><a href = "/customer">Home</a></li>
+<li><a href = "create">Create Account</a></li>
+<li><a href = "edit_prof">Edit Profile</a></li>
+
 {% endblock name %}
 
 {% block content %}
-<p>
-
-    <table class="table">
-    <tr>
-        <td>{{ acc_num }}</td>
-        <td>{{ balance }}</td>
-        <td>
-            <form action="account" method="post">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <input type="hidden" name="acc_num" value="{{acc_id}}" />
-                <input type="submit" name="submit" value="Deposit"/>
-            </form>
-        </td>
-    </tr>
-    </table>
-
+<p align="midlle">
+    
+    <form action="/customer/transfer_pend" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" name="submit" value="Deposit"/>
+    </form>
 
 </p>
 {% endblock content %}
