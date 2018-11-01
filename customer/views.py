@@ -68,7 +68,7 @@ def deposit_comp(request):
     bal = int(form['amount'].data)
     user1 = request.user
     if(bal<0):
-        print("not valid")    #asdfaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+        print("do something") #dsaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 
     new_deposit = Deposit.objects.create(owner = user1, owner_acc = acc1, amount = bal)
     new_deposit.save()
