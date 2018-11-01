@@ -8,5 +8,5 @@ class DetailsForm(forms.Form):
     email_address = forms.EmailField()
     choice = forms.ChoiceField(label='Account Type',choices=choices.GROUP)
     mobile_number = forms.RegexField(regex=r'^\+?1?\d{9,15}$')
-    public_key = forms.CharField(max_length=512,widget=forms.Textarea)
+    public_key = forms.CharField(max_length=1024,widget=forms.Textarea)
     # private key later maybe

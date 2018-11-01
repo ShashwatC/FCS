@@ -45,7 +45,7 @@ class HighTransferForm(forms.Form):
     account_number = forms.IntegerField()  # ,disabled=True)
     amount = forms.IntegerField(initial=0)
     account_to = forms.IntegerField()
-    response = forms.Textarea()
+    response = forms.CharField(max_length=1024,widget=forms.Textarea)
 
 
 class DetailsForm(forms.Form):

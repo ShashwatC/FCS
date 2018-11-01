@@ -2,8 +2,10 @@ from django.http import Http404
 from django.shortcuts import render, redirect
 from home.choices import R_MAP
 from bank.models import Account, Transaction, Deposit, Withdraw, Profile, Pending
+from home.pki import decrypt
 
-from customer.forms import DepositForm, WithdrawForm, TransferForm, ProfileForm
+
+from customer.forms import DepositForm, WithdrawForm, TransferForm, ProfileForm, HighTransferForm
 from .forms import DetailsForm
 
 
@@ -141,6 +143,7 @@ def transfer2(request):
     F = TransferForm({'account_to': str(acc)})
     return render(request, 'customer/merchanttransfer.html', {'form': F})
 
+
 def transfer_comp(request):
     user = request.user
     if check(user):
@@ -163,7 +166,7 @@ def transfer_comp(request):
 
     cond = 0
 
-    if bal < 10000:
+    if bal < 1:#10000:
         new_transaction = Transaction.objects.create(sender=user1, sender_acc=acc1, receiver=user2, receiver_acc=acc2,
                                                      amount=bal, pending=False)
         new_transaction.save()
@@ -177,9 +180,44 @@ def transfer_comp(request):
         new_transaction.save()
         cond = 1
     else:
-        return render(request, 'customer/pki.html', {'form': form})
+        form_h = HighTransferForm({'account_number':form['account_number'].data ,
+                                   'amount':form['amount'].data,
+                                   'account_to': form['account_to'].data})
+        return render(request, 'customer/pki.html', {'form': form_h})
 
     return render(request, 'customer/trans_pend.html', {'cond': cond})
+
+
+def tranfer_pki(request):
+    user = request.user
+    if check(user):
+        return check(user)
+
+    form_h = HighTransferForm(request.POST)
+    private_key = Profile.objects.get(user=request.user).private_key
+    response = form_h['response'].data
+    print(response,private_key)
+    try:
+        balance = decrypt(response,private_key)
+    except:
+        return render(request, 'customer/verification_failed.html')
+
+    print(balance)
+    if int(balance) == int(form_h['amount'].data):
+        i1 = int(form_h['account_number'].data)
+        i2 = int(form_h['account_to'].data)
+        user1 = request.user
+        acc1 = Account.objects.filter(owner=user1).get(id=i1)
+        acc2 = Account.objects.get(id=i2)
+        user2 = acc2.owner
+        new_transaction = Transaction.objects.create(sender=user1, sender_acc=acc1, receiver=user2, receiver_acc=acc2,
+                                                     amount=balance, pending=True)
+        new_transaction.save()
+        print(new_transaction)
+        return render(request, 'customer/verification_success.html')
+    else:
+        return render(request, 'customer/verification_failed.html')
+
 
 
 def edit_prof(request):
