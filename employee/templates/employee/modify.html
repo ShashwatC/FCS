@@ -16,20 +16,26 @@
 
     <table class="table">
     <tr>
-        <th>Transaction id</th>
-        <th>S_ID</th>
-        <th>R_ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email Address</th>
+        <th>Mobile Number</th>
     </tr>
-    {% for pk,bal in req %}
+    {% for user,fir,las,email,mobile in req %}
     <tr>
-        <td>{{ pk }}</td>
-        <td>{{ bal }}</td>
+        <td>{{ fir }}</td>
+        <td>{{ las }}</td>
+        <td>{{ email }}</td>
+        <td>{{ mobile }}</td>
         <td>
             <form method="post">
                 {% csrf_token %}
-                <input type="hidden" name="pk" value="{{ pk }}" />
-                <input type="hidden" name="bal" value="{{ bal }}" />
-                <input type="submit" value="Approve"/>
+                <input type="hidden" name="user" value="{{ user }}" />
+                <input type="hidden" name="fir" value="{{ fir }}" />
+                <input type="hidden" name="las" value="{{ las }}" />
+                <input type="hidden" name="email" value="{{ email }}" />
+                <input type="hidden" name="mobile" value="{{ mobile }}" />
+                <input type="submit" value="submit"/>
             </form>
         </td>
     </tr>
