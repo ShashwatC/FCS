@@ -20,3 +20,9 @@ class TransferForm(forms.Form):
 
 class DetailsForm(forms.Form):
     initial_balance = forms.IntegerField()
+
+class ProfileForm(forms.Form):
+    first_name = forms.CharField(max_length=100)
+    last_name = forms.CharField(max_length=100)
+    email_address = forms.EmailField()
+    mobile_number = forms.CharField(max_length=100)

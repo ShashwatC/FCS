@@ -1,0 +1,45 @@
+{% extends "home/base.html" %}
+
+{% block name %}
+<li><a href="view"> View transactions </a></li>
+<li><a href="approval"> Approval for transactions </a></li>
+<li><a href="removal"> Remove transactions </a></li>
+<li><a href="account_pending"> Approval for accounts </a></li>
+<li><a href="modify"> Modify details </a></li>
+<li><a href="deposit"> Deposit Approval </a></li>
+<li><a href="withdraw"> Withdraw Approval </a></li>
+
+
+{% endblock name %}
+
+{% block content %}
+<p>
+
+    <table class="table">
+    <tr>
+        <th>Owner</th>
+        <th>Owner account</th>
+        <th>Amount</th>
+    </tr>
+    {% for own,own_acc,amount,pkk in req %}
+    <tr>
+        <td>{{ own }}</td>
+        <td>{{ own_acc }}</td>
+        <td>{{ amount }}</td>
+        <td>
+            <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="own" value="{{ own }}" />
+                <input type="hidden" name="own_acc" value="{{ own_acc }}" />
+                <input type="hidden" name="amount" value="{{ amount }}" />
+                <input type="hidden" name="pkk" value="{{ pkk }}" />
+                <input type="submit" value="Approve"/>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+    </table>
+
+
+</p>
+{% endblock content %}

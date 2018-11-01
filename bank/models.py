@@ -35,12 +35,24 @@ class Transaction(models.Model):
     amount = models.PositiveIntegerField()
     pending = models.BooleanField(default=True)
 
+class Deposit(models.Model):
+    owner = models.ForeignKey(User, on_delete="PROTECT", related_name="owner_d")
+    owner_acc = models.ForeignKey(Account, on_delete="PROTECT", related_name="owner_acc_d")
+    amount = models.PositiveIntegerField()
+    pending = models.BooleanField(default=True)
+
+class Withdraw(models.Model):
+    owner = models.ForeignKey(User, on_delete="PROTECT", related_name="owner_w")
+    owner_acc = models.ForeignKey(Account, on_delete="PROTECT", related_name="owner_acc_w")
+    amount = models.PositiveIntegerField()
+    pending = models.BooleanField(default=True)
+
 
 class Pending(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE,null = True)
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     email_address = models.EmailField()
-    choice = models.IntegerField()
     mobile_number = models.CharField(max_length=100)
 
 

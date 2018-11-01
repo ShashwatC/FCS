@@ -1,0 +1,38 @@
+{% extends "home/base.html" %}
+
+{% block name %}
+<li><a href="view"> View transactions </a></li>
+<li><a href="approval"> Approval for transactions </a></li>
+<li><a href="removal"> Remove transactions </a></li>
+<li><a href="account_pending"> Approval for accounts </a></li>
+<li><a href="modify"> Modify details </a></li>
+<li><a href="deposit"> Deposit Approval </a></li>
+<li><a href="withdraw"> Withdraw Approval </a></li>
+
+{% endblock name %}
+
+{% block content %}
+<p>
+
+    <table class="table">
+    <tr>
+        <th>Sender</th>
+        <th>Sender account</th>
+        <th>Receiver</th>
+        <th>Receiver account</th>
+        <th>Amount</th>
+    </tr>
+    {% for sen,sen_acc,rec,rec_acc,amount,pkk in req %}
+    <tr>
+        <td>{{ sen }}</td>
+        <td>{{ sen_acc }}</td>
+        <td>{{ rec }}</td>
+        <td>{{ rec_acc }}</td>
+        <td>{{ amount }}</td>
+    </tr>
+    {% endfor %}
+    </table>
+
+
+</p>
+{% endblock content %}
