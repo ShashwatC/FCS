@@ -1,7 +1,10 @@
 {% extends "home/base.html" %}
 
 {% block name %}
-    {{ name }}
+<li><a href = "/customer">Home</a></li>
+<li><a href = "create">Create Account</a></li>
+<li><a href = "edit_prof">Edit Profile</a></li>
+
 {% endblock name %}
 
 {% block content %}
@@ -19,7 +22,20 @@
     </tr>
     {% endfor %}
     </table>
-
-
+    <form action="deposit/" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="acc_num" value="{{ acc_no }}" />
+            <input type="submit" name="submit" value="Deposit"/>
+    </form>
+    <form action="transfer/" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="acc_num" value="{{ acc_no }}" />
+            <input type="submit" name="submit" value="Transfer"/>
+    </form>
+    <form action="withdraw/" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="acc_num" value="{{ acc_no }}" />
+            <input type="submit" name="submit" value="Withdraw"/>
+    </form>
 </p>
 {% endblock content %}
