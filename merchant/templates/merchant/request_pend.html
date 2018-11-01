@@ -8,13 +8,15 @@
 {% endblock name %}
 
 {% block content %}
+
+{% if cond == 1  %}
 <p align="midlle">
-    
-    <form action="/customer/deposit_comp" method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" name="submit" value="Deposit"/>
-    </form>
+
+<h2> Your request has been sent </h2>    
 
 </p>
+{% else  %}
+<h2> Your request has been succesfully completed </h2>
+{% endif %}    
+
 {% endblock content %}

@@ -13,9 +13,9 @@ class WithdrawForm(forms.Form):
 
 
 class TransferForm(forms.Form):
-    account_number = forms.CharField(max_length=100)  # ,disabled=True)
+    account_number = forms.IntegerField()  # ,disabled=True)
     amount = forms.IntegerField(initial=0)
-    account_to = forms.CharField(max_length=100)
+    account_to = forms.IntegerField()
 
 
 class DetailsForm(forms.Form):

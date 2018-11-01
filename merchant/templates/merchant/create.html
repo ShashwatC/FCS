@@ -1,6 +1,7 @@
 {% extends "home/base.html" %}
 
 {% block name %}
+
 <li><a href = "/customer">Home</a></li>
 <li><a href = "create">Create Account</a></li>
 <li><a href = "edit_prof">Edit Profile</a></li>
@@ -8,13 +9,13 @@
 {% endblock name %}
 
 {% block content %}
-<p align="midlle">
-    
-    <form action="/customer/deposit_comp" method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" name="submit" value="Deposit"/>
-    </form>
+<p>
+    <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Create</button>
+  </form>
+
 
 </p>
 {% endblock content %}
