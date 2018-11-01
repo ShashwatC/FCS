@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e2b53bc9-a0ac-4d79-9549-ed6f554933bf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/customer/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/customer/views.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/merchant/templates/merchant/transaction_failed.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/manager/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/merchant/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/merchant/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -47,7 +48,7 @@
         <counts>
           <entry key="css" value="1" />
           <entry key="html" value="3924" />
-          <entry key="py" value="8343" />
+          <entry key="py" value="8347" />
           <entry key="txt" value="60" />
         </counts>
       </usages-collector>
@@ -56,7 +57,7 @@
           <entry key="CSS" value="1" />
           <entry key="HTML" value="3924" />
           <entry key="PLAIN_TEXT" value="60" />
-          <entry key="Python" value="8343" />
+          <entry key="Python" value="8347" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts" />
@@ -80,8 +81,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/merchant/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="263">
-              <caret line="101" lean-forward="true" selection-start-line="101" selection-end-line="101" />
+            <state relative-caret-position="-3712">
+              <caret line="56" column="19" selection-start-line="56" selection-start-column="19" selection-end-line="56" selection-end-column="19" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -92,8 +93,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/manager/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="47" column="66" lean-forward="true" selection-start-line="47" selection-end-line="48" />
+            <state relative-caret-position="215">
+              <caret line="55" column="32" selection-start-line="55" selection-start-column="32" selection-end-line="55" selection-end-column="32" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
@@ -179,7 +180,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>nav</find>
       <find>main_body</find>
       <find>header</find>
       <find>Bootstrap Side</find>
@@ -209,6 +209,7 @@
       <find>trans_pend</find>
       <find>Transaction.objects.filter(pk = int(form['pkk'])).delete(</find>
       <find>Transaction.objects.filter(pk = int(form['pkk'])).delete()</find>
+      <find>delete</find>
     </findStrings>
     <replaceStrings>
       <replace>merchant/</replace>
@@ -779,25 +780,25 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/manager/templates/manager/transactions.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-114" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/merchant/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="101" lean-forward="true" selection-start-line="101" selection-end-line="101" />
+        <state relative-caret-position="-3712">
+          <caret line="56" column="19" selection-start-line="56" selection-start-column="19" selection-end-line="56" selection-end-column="19" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/manager/templates/manager/transactions.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-114" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/manager/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="47" column="66" lean-forward="true" selection-start-line="47" selection-end-line="48" />
+        <state relative-caret-position="215">
+          <caret line="55" column="32" selection-start-line="55" selection-start-column="32" selection-end-line="55" selection-end-column="32" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
           </folding>

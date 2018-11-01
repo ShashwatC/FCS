@@ -151,8 +151,9 @@ def withdraw_comp(request):
     acc1 = Account.objects.get(id = i1)
     bal = int(form['amount'].data)
     user1 = request.user
-    if bal>acc1.balance:
-        return render(request,'merchant/insufficient.html')
+    if(bal>acc1.balance):
+        return render(request,"merchant/transaction_failed.html")
+
     
     cond = 0
     if(bal<10000):
@@ -229,17 +230,11 @@ def transfer_comp(request):
 
     user1 = request.user
     user2 = acc2.owner
-
-    cond = 0
-
-    if (acc1.balance < bal):
-        return render(request, "merchant/transaction_failed.html")
-
-    if bal < 10000:
-        new_transaction = Transaction.objects.create(sender=user1, sender_acc=acc1, receiver=user2, receiver_acc=acc2,
-                                                     amount=bal, pending=False)
-        new_transaction.save()
-
+    if(bal>acc1.balance):
+        return render(request,"merchant/transaction_failed.html")
+        
+    cond = 0    
+    if(bal<10000):
         acc1.balance -= bal
         acc2.balance += bal
 
