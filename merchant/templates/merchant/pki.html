@@ -1,0 +1,35 @@
+{% extends 'home/base.html' %}
+
+{% block title %}Register{% endblock %}
+
+
+{% block content %}
+  Due to this very high value transaction, you will need to prove possession of the key you were given at sign up.
+    <br/>
+    <br/>
+    To do that, you need to encrypt your payment amount with your 2048 bit key using RSA with OAEP (SHA1 And MGF1 Padding)
+<br/>
+    <br/>
+    We advice you perform this locally using openssl library.
+    <br/>
+    However, in case you're having difficulties,
+        you can use this <a href="https://8gwifi.org/rsafunctions.jsp">https://8gwifi.org/rsafunctions.jsp</a>
+    website.
+    <br/>
+    <br/>
+    If you're using that website-
+    <ol>
+    <li>Select key size as 2048 bits</li>
+    <li>Replace the public key field with your  key</li>
+    <li>Choose RSA/NONE/OAEPWithSHA1AndMGF1Padding as the encryption method</li>
+    <li>The data to encrypt will be the balance (without any comma, decimal, Rs., etc., just the amount)</li>
+    </ol>
+    <br/>
+
+  <form action="transfer_pend2" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit Challenge Response</button>
+
+  </form>
+{% endblock %}

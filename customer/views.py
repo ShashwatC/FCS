@@ -117,8 +117,8 @@ def withdraw_comp(request):
     if not form.is_valid():
         return render(request, 'customer/withdraw.html', {'acc': acc1.id, 'form': form})
 
-    if(acc1.balance<bal):
-    	return render(request,"customer/transaction_failed.html")
+    if acc1.balance < bal:
+        return render(request,"customer/transaction_failed.html")
 
     cond = 0
     if bal < 10000:
