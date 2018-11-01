@@ -115,7 +115,7 @@ def withdraw_comp(request):
     bal = int(form['amount'].data)
     user1 = request.user
     if(bal>acc1.balance):
-        print("not valid")    #asdfaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+        return render(request,"merchant/transaction_failed.html")
     
     cond = 0
     if(bal<10000):
@@ -155,9 +155,9 @@ def transfer_comp(request):
     bal = int(form['amount'].data)
     user1 = request.user
     user2 = acc2.owner
-    if(bal<0):
-        print("not valid")    #asdfaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-
+    if(bal>acc1.balance):
+        return render(request,"merchant/transaction_failed.html")
+        
     cond = 0    
     if(bal<10000):
         acc1.balance -= bal
