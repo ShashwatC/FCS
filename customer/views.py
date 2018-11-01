@@ -1,26 +1,23 @@
 from django.http import Http404
 from django.shortcuts import render, redirect
 from home.choices import R_MAP
-<<<<<<< HEAD
-from bank.models import Account, Transaction, Deposit, Withdraw, Profile, Pending, OTPInfo
+
 import math, random
-from customer.forms import DepositForm, WithdrawForm, TransferForm, ProfileForm, OTPForm
-=======
-from bank.models import Account, Transaction, Deposit, Withdraw, Profile, Pending
+from bank.models import Account, Transaction, Deposit, Withdraw, Profile, Pending, OTPInfo
 from home.pki import decrypt
+from customer.forms import DepositForm, WithdrawForm, TransferForm, ProfileForm, HighTransferForm, OTPForm
 
-
-from customer.forms import DepositForm, WithdrawForm, TransferForm, ProfileForm, HighTransferForm
->>>>>>> 40d512fb6dc31e395a9c21834906511c54b342d1
 from .forms import DetailsForm
 from django.core.mail import send_mail
 
-def generateOTP(len) : 
+
+def generateOTP(len):
     digits = "0123456789"
-    OTP = "" 
+    OTP = ""
     for i in range(len) : 
         OTP += digits[math.floor(random.random() * 10)] 
     return OTP
+
 
 def check(user):
     if user.groups.count() == 0:
@@ -179,7 +176,7 @@ def transfer_comp(request):
 
     cond = 0
 
-    if bal < 1:#10000:
+    if bal < 10000:
         new_transaction = Transaction.objects.create(sender=user1, sender_acc=acc1, receiver=user2, receiver_acc=acc2,
                                                      amount=bal, pending=False)
         new_transaction.save()
@@ -209,7 +206,7 @@ def transfer_comp(request):
 
     return render(request, 'customer/trans_pend.html', {'cond': cond})
 
-<<<<<<< HEAD
+
 def otp_verify(request):
     user = request.user
     if check(user):
@@ -228,8 +225,7 @@ def otp_verify(request):
         Original.delete()
     print(p)
     return render(request, 'customer/otp_pend.html',{'cond':p})
-    
-=======
+
 
 def tranfer_pki(request):
     user = request.user
@@ -262,7 +258,6 @@ def tranfer_pki(request):
         return render(request, 'customer/verification_failed.html')
 
 
->>>>>>> 40d512fb6dc31e395a9c21834906511c54b342d1
 def edit_prof(request):
     user = request.user
     if check(user):

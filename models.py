@@ -22,12 +22,12 @@ class Profile(models.Model):
 
 
 class Logs(models.Model):
-    timestamp = models.DateTimeField()
+    timestamp = models.DateTimeField(auto_now=True)
     message = models.CharField(max_length=256)
 
 
 class Transaction(models.Model):
-    timestamp = models.DateTimeField()
+    timestamp = models.DateTimeField(auto_now=True)
     sender = models.ForeignKey(User, on_delete="PROTECT", related_name="sender")
     sender_acc = models.ForeignKey(Account, on_delete="PROTECT", related_name="sender_acc")
     receiver = models.ForeignKey(User, on_delete="PROTECT", related_name="receiver")
@@ -36,12 +36,14 @@ class Transaction(models.Model):
     pending = models.BooleanField(default=True)
 
 class Deposit(models.Model):
+    timestamp = models.DateTimeField(auto_now=True)
     owner = models.ForeignKey(User, on_delete="PROTECT", related_name="owner_d")
     owner_acc = models.ForeignKey(Account, on_delete="PROTECT", related_name="owner_acc_d")
     amount = models.PositiveIntegerField()
     pending = models.BooleanField(default=True)
 
 class Withdraw(models.Model):
+    timestamp = models.DateTimeField(auto_now=True)
     owner = models.ForeignKey(User, on_delete="PROTECT", related_name="owner_w")
     owner_acc = models.ForeignKey(Account, on_delete="PROTECT", related_name="owner_acc_w")
     amount = models.PositiveIntegerField()
@@ -49,6 +51,7 @@ class Withdraw(models.Model):
 
 
 class Pending(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     email_address = models.EmailField()
