@@ -61,6 +61,9 @@ def deposit(request):
 
 
 def deposit_comp(request):
+    user = request.user
+    if check(user):
+        return check(user)
     form = DepositForm(request.POST)
     i1 = int(form['account_number'].data)
     acc1 = Account.objects.get(id=i1)
@@ -88,6 +91,10 @@ def withdraw(request):
 
 
 def withdraw_comp(request):
+    user = request.user
+    if check(user):
+        return check(user)
+
     form = WithdrawForm(request.POST)
     i1 = int(form['account_number'].data)
     acc1 = Account.objects.get(id=i1)
@@ -115,6 +122,7 @@ def transfer(request):
     user = request.user
     if check(user):
         return check(user)
+
     form = request.POST
     acc = Account.objects.filter(owner=user).get(id=form['acc_num'])
     print(acc)
@@ -123,8 +131,11 @@ def transfer(request):
 
 
 def transfer_comp(request):
-    form = TransferForm(request.POST)
     user = request.user
+    if check(user):
+        return check(user)
+
+    form = TransferForm(request.POST)
     acc = Account.objects.filter(owner=user).get(id=user)
 
     if not form.is_valid():
@@ -159,6 +170,10 @@ def transfer_comp(request):
 
 
 def edit_prof(request):
+    user = request.user
+    if check(user):
+        return check(user)
+
     if request.method == 'POST':
         form = ProfileForm(request.POST)
         user = request.user
@@ -177,6 +192,10 @@ def edit_prof(request):
 
 
 def create_acc(request):
+    user = request.user
+    if check(user):
+        return check(user)
+
     if request.method == 'POST':
         form = DetailsForm(request.POST)
 

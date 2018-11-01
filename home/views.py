@@ -11,7 +11,19 @@ from home.pki import get_pair
 
 
 def index(request):
-    return render(request, 'home/index.html')
+    if request.user.groups.filter(name="0").exists():
+        return redirect("/customer")
+    elif request.user.groups.filter(name="1").exists():
+        return redirect("/merchant")
+    elif request.user.groups.filter(name="2").exists():
+        return redirect("/employee")
+    elif request.user.groups.filter(name="3").exists():
+        return redirect("/manager")
+    elif request.user.groups.filter(name="4").exists():
+        return redirect("/sysadmin")
+    else:
+        return redirect("/accounts/login")
+
 
 
 def pending(request):
