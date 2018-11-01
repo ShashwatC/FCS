@@ -35,6 +35,18 @@ class Transaction(models.Model):
     amount = models.PositiveIntegerField()
     pending = models.BooleanField(default=True)
 
+class Deposit(models.Model):
+    owner = models.ForeignKey(User, on_delete="PROTECT", related_name="owner_d")
+    owner_acc = models.ForeignKey(Account, on_delete="PROTECT", related_name="owner_acc_d")
+    amount = models.PositiveIntegerField()
+    pending = models.BooleanField(default=True)
+
+class Withdraw(models.Model):
+    owner = models.ForeignKey(User, on_delete="PROTECT", related_name="owner_w")
+    owner_acc = models.ForeignKey(Account, on_delete="PROTECT", related_name="owner_acc_w")
+    amount = models.PositiveIntegerField()
+    pending = models.BooleanField(default=True)
+
 
 class Pending(models.Model):
     first_name = models.CharField(max_length=100)
