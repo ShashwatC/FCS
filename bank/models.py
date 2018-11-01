@@ -27,7 +27,7 @@ class Logs(models.Model):
 
 
 class Transaction(models.Model):
-    timestamp = models.DateTimeField()
+    timestamp = models.DateTimeField(auto_now_add=True)
     sender = models.ForeignKey(User, on_delete="PROTECT", related_name="sender")
     sender_acc = models.ForeignKey(Account, on_delete="PROTECT", related_name="sender_acc")
     receiver = models.ForeignKey(User, on_delete="PROTECT", related_name="receiver")

@@ -66,7 +66,7 @@ def deposit_comp(request):
         return check(user)
     form = DepositForm(request.POST)
     i1 = int(form['account_number'].data)
-    acc1 = Account.objects.get(id=i1)
+    acc1 = Account.objects.filter(owner=user).get(id=i1)
     bal = int(form['amount'].data)
     user1 = request.user
 
@@ -97,7 +97,7 @@ def withdraw_comp(request):
 
     form = WithdrawForm(request.POST)
     i1 = int(form['account_number'].data)
-    acc1 = Account.objects.get(id=i1)
+    acc1 = Account.objects.filter(owner=user).get(id=i1)
     bal = int(form['amount'].data)
     user1 = request.user
 
@@ -106,12 +106,12 @@ def withdraw_comp(request):
 
     cond = 0
     if bal < 10000:
-        new_withdraw = Withdraw.objects.create(owner=user1, owner_acc=acc1, amount=bal, pending=True)
+        new_withdraw = Withdraw.objects.create(owner=user1, owner_acc=acc1, amount=bal, pending=False)
         new_withdraw.save()
-        acc1 -= bal
+        acc1.balance -= bal
         acc1.save()
     else:
-        new_withdraw = Withdraw.objects.create(owner=user1, owner_acc=acc1, amount=bal, pending=False)
+        new_withdraw = Withdraw.objects.create(owner=user1, owner_acc=acc1, amount=bal, pending=True)
         new_withdraw.save()
         cond = 1
 
@@ -136,10 +136,6 @@ def transfer_comp(request):
         return check(user)
 
     form = TransferForm(request.POST)
-    acc = Account.objects.filter(owner=user).get(id=user)
-
-    if not form.is_valid():
-        return render(request, 'customer/transfer.html', {'acc': acc.id, 'form': form})
 
     print(type(form['account_number']))
     i1 = int(form['account_number'].data)
@@ -147,6 +143,10 @@ def transfer_comp(request):
     acc1 = Account.objects.filter(owner=user).get(id=i1)
     acc2 = Account.objects.get(id=i2)
     bal = int(form['amount'].data)
+
+    if not form.is_valid():
+        return render(request, 'customer/transfer.html', {'acc': acc1.id, 'form': form})
+
     user1 = request.user
     user2 = acc2.owner
 
@@ -160,11 +160,13 @@ def transfer_comp(request):
         acc2.balance += bal
         acc1.save()
         acc2.save()
-    else:
+    elif bal <= 10000000:
         new_transaction = Transaction.objects.create(sender=user1, sender_acc=acc1, receiver=user2, receiver_acc=acc2,
                                                      amount=bal, pending=True)
         new_transaction.save()
         cond = 1
+    else:
+        return render(request, 'customer/pki.html', {'form': form})
 
     return render(request, 'customer/trans_pend.html', {'cond': cond})
 

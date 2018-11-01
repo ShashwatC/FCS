@@ -36,6 +36,18 @@ class TransferForm(forms.Form):
     account_to = forms.IntegerField()
 
 
+class HighTransferForm(forms.Form):
+    def clean_amount(self):
+        amount = self.cleaned_data['amount']
+        if amount < 0:
+            raise ValidationError("Amount must be positive")
+        return amount
+    account_number = forms.IntegerField()  # ,disabled=True)
+    amount = forms.IntegerField(initial=0)
+    account_to = forms.IntegerField()
+    response = forms.Textarea()
+
+
 class DetailsForm(forms.Form):
     def clean_initial_balance(self):
         initial_balance = self.cleaned_data['initial_balance']
