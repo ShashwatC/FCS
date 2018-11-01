@@ -127,3 +127,5 @@ EMAIL_HOST_USER = 'securebankingincorporated@gmail.com'
 EMAIL_HOST_PASSWORD = ".Y^4EH%'q_pw7+yf"
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True

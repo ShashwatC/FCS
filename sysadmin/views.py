@@ -1,15 +1,17 @@
-from django.shortcuts import render
+from django.http import Http404
+from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from home.choices import MAP, R_MAP
 from django.contrib.auth.models import Group
 from bank.models import Account,Transaction, Withdraw, Deposit
+
 
 def check(user):
     if user.groups.count() == 0:
         return redirect("/accounts/login")
 
     if user.groups.count() == 1:
-        raise Http404()
+        return redirect("/accounts/pending")
 
     user_group = user.groups.values('name')
     c = 0
@@ -33,6 +35,7 @@ def del_internal(request):
     user = request.user
     if check(user):
         return check(user)
+
     if request.method == 'POST':
         form = request.POST
         User.objects.filter(username = form['user']).delete()
@@ -82,12 +85,17 @@ def view_trans(request):
     user = request.user
     if check(user):
         return check(user)
+
     all_trans = Transaction.objects.all()
     all_withdraw = Withdraw.objects.all()
     all_deposit = Deposit.objects.all()
     return render(request, 'sysadmin/view.html', { 'trans': all_trans, 'withdraw' : all_withdraw, 'depoit' : all_deposit})
 
 def acc_pen(request):
+    user = request.user
+    if check(user):
+        return check(user)
+
     if request.method == 'POST':
         form = request.POST
 
@@ -95,9 +103,6 @@ def acc_pen(request):
         acc.pending = False
         acc.save()
 
-    user = request.user
-    if check(user):
-        return check(user)
     reqs = Account.objects.all()
     reques = []
     for acc in reqs:
@@ -105,4 +110,4 @@ def acc_pen(request):
             reques.append((acc.pk, acc.balance))
 
     name = request.user.first_name + " " + request.user.last_name
-    return render(request, 'sysadmin/transaction.html', {'req': reques, 'name': name})
+    return render(request, 'sysadmin/account_pending.html', {'req': reques, 'name': name})

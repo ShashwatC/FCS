@@ -56,6 +56,7 @@ def account(request):
     user = request.user
     if check(user):
         return check(user)
+
     name = request.user.first_name + " " + request.user.last_name
     form = request.POST
     acc = Account.objects.filter(owner=user).get(id=form['acc_num'])
@@ -66,6 +67,7 @@ def deposit(request):
     user = request.user
     if check(user):
         return check(user)
+
     form = request.POST
     acc = Account.objects.filter(owner=user).get(id=form['acc_num'])
     print(acc)
@@ -73,13 +75,16 @@ def deposit(request):
     return render(request, 'merchant/deposit.html', {'acc': acc.id, 'form': F})
 
 def deposit_comp(request):
+    user = request.user
+    if check(user):
+        return check(user)
 
     form = DepositForm(request.POST)
     i1 = int(form['account_number'].data)
     acc1 = Account.objects.get(id = i1)
     bal = int(form['amount'].data)
     user1 = request.user
-    if(bal<0):
+    if bal<0:
         print("not valid")    #asdfaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 
     new_deposit = Deposit.objects.create(owner = user1, owner_acc = acc1, amount = bal)
@@ -92,6 +97,7 @@ def withdraw(request):
     user = request.user
     if check(user):
         return check(user)
+
     form = request.POST
     acc = Account.objects.filter(owner=user).get(id=form['acc_num'])
     print(acc)
@@ -99,6 +105,9 @@ def withdraw(request):
     return render(request, 'merchant/withdraw.html', {'acc': acc.id, 'form': form})
 
 def withdraw_comp(request):
+    user = request.user
+    if check(user):
+        return check(user)
 
     form = WithdrawForm(request.POST)
     i1 = int(form['account_number'].data)
@@ -124,6 +133,7 @@ def transfer(request):
     user = request.user
     if check(user):
         return check(user)
+
     form = request.POST
     acc = Account.objects.filter(owner=user).get(id=form['acc_num'])
     print(acc)
@@ -131,6 +141,10 @@ def transfer(request):
     return render(request, 'merchant/transfer.html', {'acc': acc.id, 'form': F})
 
 def transfer_comp(request):
+    user = request.user
+    if check(user):
+        return check(user)
+
     form = TransferForm(request.POST)
     print("asdjflkajslfjdalkdjflasjdflk")
     print(type(form['account_number']))
@@ -159,6 +173,11 @@ def transfer_comp(request):
 
 
 def edit_prof(request):
+    user = request.user
+    if check(user):
+        return check(user)
+
+
     if request.method == 'POST':
         form = ProfileForm(request.POST)
         user = request.user
@@ -177,6 +196,11 @@ def edit_prof(request):
 
 
 def create_acc(request):
+    user = request.user
+    if check(user):
+        return check(user)
+
+
     if request.method == 'POST':
         form = DetailsForm(request.POST)
         if form.is_valid():
@@ -193,6 +217,10 @@ def create_acc(request):
     return render(request, 'merchant/create.html', {'form': form})
 
 def pay_merch(request,id):
+    user = request.user
+    if check(user):
+        return check(user)
+
     try:
         merchant = Account.objects.get(pk=id)
     except Account.DoesNotExist:

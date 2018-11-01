@@ -3,12 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="e2b53bc9-a0ac-4d79-9549-ed6f554933bf" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bank/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/bank/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bank/migrations/0006_auto_20181101_1623.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/customer/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/employee/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/employee/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/employee/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/employee/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/employee/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/manager/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merchant/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/merchant/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sysadmin/templates/sysadmin/transaction.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sysadmin/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/sysadmin/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -35,33 +34,33 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="css" value="1" />
-          <entry key="html" value="75" />
-          <entry key="py" value="92" />
+          <entry key="html" value="82" />
+          <entry key="py" value="100" />
           <entry key="txt" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CSS" value="1" />
-          <entry key="HTML" value="75" />
+          <entry key="HTML" value="82" />
           <entry key="PLAIN_TEXT" value="2" />
-          <entry key="Python" value="92" />
+          <entry key="Python" value="100" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="css" value="1" />
-          <entry key="html" value="3893" />
-          <entry key="py" value="8113" />
+          <entry key="html" value="3903" />
+          <entry key="py" value="8169" />
           <entry key="txt" value="60" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="1" />
-          <entry key="HTML" value="3893" />
+          <entry key="HTML" value="3903" />
           <entry key="PLAIN_TEXT" value="60" />
-          <entry key="Python" value="8113" />
+          <entry key="Python" value="8169" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts" />
@@ -73,8 +72,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/customer/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3000">
-              <caret line="200" column="9" lean-forward="true" selection-start-line="200" selection-start-column="9" selection-end-line="200" selection-end-column="9" />
+            <state relative-caret-position="103">
+              <caret line="26" column="44" lean-forward="true" selection-start-line="26" selection-start-column="8" selection-end-line="26" selection-end-column="44" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
                 <marker date="1541092365321" expanded="true" signature="8187:8192" ph="..." />
@@ -83,35 +82,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/bank/models.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/merchant/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="248">
-              <caret line="69" column="49" lean-forward="true" selection-start-line="69" selection-start-column="49" selection-end-line="69" selection-end-column="49" />
+            <state relative-caret-position="3164">
+              <caret line="228" column="31" lean-forward="true" selection-start-line="228" selection-start-column="31" selection-end-line="228" selection-end-column="31" />
               <folding>
-                <element signature="e#0#28#0" expanded="true" />
+                <element signature="e#0#31#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models.py">
+        <entry file="file://$PROJECT_DIR$/sysadmin/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="23">
-              <caret line="50" lean-forward="true" selection-start-line="50" selection-end-line="50" />
-              <folding>
-                <element signature="e#0#28#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/manager/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="201">
-              <caret line="28" column="26" lean-forward="true" selection-start-line="26" selection-start-column="4" selection-end-line="28" selection-end-column="26" />
+            <state relative-caret-position="127">
+              <caret line="13" column="44" selection-start-line="13" selection-start-column="44" selection-end-line="13" selection-end-column="44" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
@@ -122,56 +109,65 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/employee/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="7" column="16" lean-forward="true" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
+            <state relative-caret-position="118">
+              <caret line="12" column="44" selection-start-line="12" selection-start-column="44" selection-end-line="12" selection-end-column="44" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/customer/templates/customer/verification_success.html">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/manager/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="22" lean-forward="true" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/customer/templates/customer/verification_failed.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="18" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/home/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="13" column="43" selection-start-line="13" selection-start-column="43" selection-end-line="13" selection-end-column="43" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/customer/urls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="10" column="24" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/home/pki.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="19" column="42" lean-forward="true" selection-start-line="19" selection-start-column="42" selection-end-line="19" selection-end-column="42" />
+            <state relative-caret-position="153">
+              <caret line="12" column="44" selection-start-line="12" selection-start-column="44" selection-end-line="12" selection-end-column="44" />
               <folding>
-                <element signature="e#0#64#0" expanded="true" />
+                <element signature="e#0#31#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/sysadmin/templates/sysadmin/removal.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="76">
+              <caret line="13" column="8" lean-forward="true" selection-start-line="13" selection-start-column="8" selection-end-line="13" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/sysadmin/templates/sysadmin/account_pending.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="248">
+              <caret line="32" column="9" lean-forward="true" selection-start-line="32" selection-start-column="9" selection-end-line="32" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/employee/templates/employee/account_pending.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="287">
+              <caret line="36" column="12" lean-forward="true" selection-start-line="16" selection-start-column="4" selection-end-line="36" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/sysadmin/templates/sysadmin/view.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-543">
+              <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bank/settings.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="278">
+              <caret line="131" lean-forward="true" selection-start-line="131" selection-end-line="131" />
             </state>
           </provider>
         </entry>
@@ -222,15 +218,11 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/employee/templates/employee/index.html" />
         <option value="$PROJECT_DIR$/manager/templates/manager/index.html" />
         <option value="$PROJECT_DIR$/sysadmin/termplates/sysadmin/index.html" />
         <option value="$PROJECT_DIR$/merchant/templates/merchant/index.html" />
-        <option value="$PROJECT_DIR$/merchant/views.py" />
         <option value="$PROJECT_DIR$/home/templates/registration/register.html" />
         <option value="$PROJECT_DIR$/sysadmin/urls.py" />
-        <option value="$PROJECT_DIR$/sysadmin/templates/sysadmin/pending.html" />
-        <option value="$PROJECT_DIR$/sysadmin/views.py" />
         <option value="$PROJECT_DIR$/home/choices.py" />
         <option value="$PROJECT_DIR$/home/templates/registration/logout.html" />
         <option value="$PROJECT_DIR$/home/templates/registration/logged_out.html" />
@@ -241,7 +233,6 @@
         <option value="$PROJECT_DIR$/home/templates/registration/password_reset_confirm.html" />
         <option value="$PROJECT_DIR$/home/templates/registration/password_reset_done.html" />
         <option value="$PROJECT_DIR$/home/templates/registration/password_reset_form.html" />
-        <option value="$PROJECT_DIR$/bank/settings.py" />
         <option value="$PROJECT_DIR$/home/templates/home/style.css" />
         <option value="$PROJECT_DIR$/home/templates/home/base.html" />
         <option value="$PROJECT_DIR$/home/templates/registration/login.html" />
@@ -264,11 +255,20 @@
         <option value="$PROJECT_DIR$/customer/templates/customer/pki.html" />
         <option value="$PROJECT_DIR$/customer/templates/customer/verification_failed.html" />
         <option value="$PROJECT_DIR$/customer/templates/customer/verification_success.html" />
-        <option value="$PROJECT_DIR$/manager/views.py" />
-        <option value="$PROJECT_DIR$/employee/views.py" />
         <option value="$PROJECT_DIR$/employee/models.py" />
         <option value="$PROJECT_DIR$/models.py" />
         <option value="$PROJECT_DIR$/customer/views.py" />
+        <option value="$PROJECT_DIR$/sysadmin/templates/sysadmin/index.html" />
+        <option value="$PROJECT_DIR$/sysadmin/templates/sysadmin/pending.html" />
+        <option value="$PROJECT_DIR$/sysadmin/templates/sysadmin/removal.html" />
+        <option value="$PROJECT_DIR$/sysadmin/templates/sysadmin/view.html" />
+        <option value="$PROJECT_DIR$/bank/settings.py" />
+        <option value="$PROJECT_DIR$/merchant/views.py" />
+        <option value="$PROJECT_DIR$/sysadmin/templates/sysadmin/transaction.html" />
+        <option value="$PROJECT_DIR$/sysadmin/templates/sysadmin/approval.html" />
+        <option value="$PROJECT_DIR$/sysadmin/views.py" />
+        <option value="$PROJECT_DIR$/employee/views.py" />
+        <option value="$PROJECT_DIR$/manager/views.py" />
       </list>
     </option>
   </component>
@@ -299,11 +299,6 @@
             <path>
               <item name="FCS" type="b2602c69:ProjectViewProjectNode" />
               <item name="FCS" type="462c0819:PsiDirectoryNode" />
-              <item name="bank" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FCS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FCS" type="462c0819:PsiDirectoryNode" />
               <item name="customer" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -314,7 +309,25 @@
             <path>
               <item name="FCS" type="b2602c69:ProjectViewProjectNode" />
               <item name="FCS" type="462c0819:PsiDirectoryNode" />
-              <item name="home" type="462c0819:PsiDirectoryNode" />
+              <item name="employee" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FCS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FCS" type="462c0819:PsiDirectoryNode" />
+              <item name="employee" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="employee" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FCS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FCS" type="462c0819:PsiDirectoryNode" />
+              <item name="manager" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FCS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FCS" type="462c0819:PsiDirectoryNode" />
+              <item name="merchant" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -396,12 +409,12 @@
     <frame x="10" y="43" width="1260" height="670" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27339903" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27339903" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32871974" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32871974" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -426,50 +439,8 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/home/templates/registration/password_reset_form.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="17" selection-start-column="17" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/home/templates/registration/password_reset_email.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="24" lean-forward="true" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/home/templates/registration/password_reset_done.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="14" lean-forward="true" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/home/templates/registration/password_reset_confirm.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="17" selection-start-column="17" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/home/templates/registration/password_reset_complete.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="17" selection-start-column="17" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/manage.py">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bank/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="118">
-          <caret line="24" column="12" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="12" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/home/templates/home/style.css" />
     <entry file="file://$PROJECT_DIR$/bank/urls.py">
@@ -489,24 +460,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sysadmin/templates/sysadmin/pending.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="22" lean-forward="true" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/home/choices.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" column="20" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sysadmin/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
         </state>
       </provider>
     </entry>
@@ -568,13 +525,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/employee/templates/employee/account_pending.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="30" lean-forward="true" selection-start-line="24" selection-start-column="30" selection-end-line="24" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/home/templates/registration/register_more.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -608,11 +558,6 @@
         <state relative-caret-position="300">
           <caret line="20" column="12" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/customer/templates/customer/deposit.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-37" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/customer/templates/customer/deposit_comp.html">
@@ -703,23 +648,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/manager/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="28" column="26" lean-forward="true" selection-start-line="26" selection-start-column="4" selection-end-line="28" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/employee/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="7" column="16" lean-forward="true" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/customer/models.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -746,10 +674,76 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/bank/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="248">
+          <caret line="69" column="33" selection-start-line="69" selection-start-column="33" selection-end-line="69" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/customer/templates/customer/deposit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" selection-start-line="7" selection-end-line="7" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sysadmin/templates/sysadmin/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="48" selection-start-line="6" selection-start-column="48" selection-end-line="6" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sysadmin/templates/sysadmin/pending.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="48" selection-start-line="7" selection-start-column="48" selection-end-line="7" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bank/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="278">
+          <caret line="131" lean-forward="true" selection-start-line="131" selection-end-line="131" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sysadmin/templates/sysadmin/view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-543">
+          <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/employee/templates/employee/account_pending.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="287">
+          <caret line="36" column="12" lean-forward="true" selection-start-line="16" selection-start-column="4" selection-end-line="36" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sysadmin/templates/sysadmin/removal.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="13" column="8" lean-forward="true" selection-start-line="13" selection-start-column="8" selection-end-line="13" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sysadmin/templates/sysadmin/account_pending.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="248">
+          <caret line="32" column="9" lean-forward="true" selection-start-line="32" selection-start-column="9" selection-end-line="32" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/customer/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3000">
-          <caret line="200" column="9" lean-forward="true" selection-start-line="200" selection-start-column="9" selection-end-line="200" selection-end-column="9" />
+        <state relative-caret-position="103">
+          <caret line="26" column="44" lean-forward="true" selection-start-line="26" selection-start-column="8" selection-end-line="26" selection-end-column="44" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
             <marker date="1541092365321" expanded="true" signature="8187:8192" ph="..." />
@@ -757,12 +751,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bank/models.py">
+    <entry file="file://$PROJECT_DIR$/merchant/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="69" column="49" lean-forward="true" selection-start-line="69" selection-start-column="49" selection-end-line="69" selection-end-column="49" />
+        <state relative-caret-position="3164">
+          <caret line="228" column="31" lean-forward="true" selection-start-line="228" selection-start-column="31" selection-end-line="228" selection-end-column="31" />
           <folding>
-            <element signature="e#0#28#0" expanded="true" />
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sysadmin/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="127">
+          <caret line="13" column="44" selection-start-line="13" selection-start-column="44" selection-end-line="13" selection-end-column="44" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/employee/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="118">
+          <caret line="12" column="44" selection-start-line="12" selection-start-column="44" selection-end-line="12" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/manager/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="12" column="44" selection-start-line="12" selection-start-column="44" selection-end-line="12" selection-end-column="44" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
           </folding>
         </state>
       </provider>
