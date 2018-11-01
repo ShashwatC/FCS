@@ -23,7 +23,7 @@ class Profile(models.Model):
 
 
 class Logs(models.Model):
-    timestamp = models.DateTimeField()
+    timestamp = models.DateTimeField(auto_now_add=True)
     message = models.CharField(max_length=256)
 
 

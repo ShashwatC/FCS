@@ -8,6 +8,7 @@ urlpatterns = [
     path('account/deposit/',views.deposit, name='deposit'),
     path('account/withdraw/',views.withdraw, name='withdraw'),
     path('account/transfer/',views.transfer, name='transfer'),
+    path('transfer_pend2',views.tranfer_pki, name='transfer'),
     path('transfer_pend',views.transfer_comp, name='transfer_pend'),
     path('deposit_comp',views.deposit_comp, name='deposit_comp'),
     path('withdraw_comp',views.withdraw_comp, name='withdraw_comp'),
