@@ -46,7 +46,8 @@ def approval(request):
     reqs = Transaction.objects.all()
     reques = []
     for acc in reqs:
-        reques.append((acc.sender, acc.sender_acc.id, acc.receiver, acc.receiver_acc.id, acc.amount,acc.pk))
+        if(acc.amount<100000):
+            reques.append((acc.sender, acc.sender_acc.id, acc.receiver, acc.receiver_acc.id, acc.amount,acc.pk))
 
     name = request.user.first_name + " " + request.user.last_name
     return render(request, 'employee/transactions.html', {'req': reques, 'name': name})
@@ -62,7 +63,8 @@ def removal(request):
     reqs = Transaction.objects.all()
     reques = []
     for acc in reqs:
-        reques.append((acc.sender, acc.sender_acc.id, acc.receiver, acc.receiver_acc.id, acc.amount,acc.pk))
+        if(acc.amount<100000):
+            reques.append((acc.sender, acc.sender_acc.id, acc.receiver, acc.receiver_acc.id, acc.amount,acc.pk))
 
     name = request.user.first_name + " " + request.user.last_name
     return render(request, 'employee/removal.html', {'req': reques, 'name': name})
@@ -75,15 +77,11 @@ def vew(request):
     reqs = Transaction.objects.all()
     reques = []
     for acc in reqs:
-        reques.append((acc.sender, acc.sender_acc.id, acc.receiver, acc.receiver_acc.id, acc.amount,acc.pk))
+        if(acc.amount<100000):
+            reques.append((acc.sender, acc.sender_acc.id, acc.receiver, acc.receiver_acc.id, acc.amount,acc.pk))
 
     name = request.user.first_name + " " + request.user.last_name
     return render(request, 'employee/view.html', {'req': reques, 'name': name})
-
-
-def modify(request):
-    name = request.user.first_name + " " + request.user.last_name
-    return render(request, 'employee/index.html', {'name': name})
 
 
 def acc_pen(request):
@@ -99,10 +97,8 @@ def acc_pen(request):
         return check(user)
     reqs = Account.objects.all()
     reques = []
-    print(reqs)
     for acc in reqs:
         if acc.pending:
-            print(acc.pk, acc.balance)
             reques.append((acc.pk, acc.balance))
 
     name = request.user.first_name + " " + request.user.last_name
@@ -124,7 +120,8 @@ def withdraw(request):
     reqs = Withdraw.objects.all()
     reques = []
     for acc in reqs:
-        reques.append((acc.owner, acc.owner_acc.id, acc.amount, acc.pk))
+        if(acc.amount<100000):
+            reques.append((acc.owner, acc.owner_acc.id, acc.amount, acc.pk))
 
     name = request.user.first_name + " " + request.user.last_name
     return render(request, 'employee/withdraw.html', {'req': reques, 'name': name})
@@ -144,11 +141,11 @@ def deposit(request):
     reqs = Deposit.objects.all()
     reques = []
     for acc in reqs:
-        reques.append((acc.owner, acc.owner_acc.id, acc.amount, acc.pk))
+        if(acc.amount<100000):
+            reques.append((acc.owner, acc.owner_acc.id, acc.amount, acc.pk))
 
     name = request.user.first_name + " " + request.user.last_name
     return render(request, 'employee/deposit.html', {'req': reques, 'name': name})
-
 
 
 def modify(request):
