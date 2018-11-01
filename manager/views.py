@@ -10,7 +10,7 @@ def check(user):
         return redirect("/accounts/login")
 
     if user.groups.count() == 1:
-        raise Http404()
+        return redirect("/accounts/pending")
 
     user_group = user.groups.values('name')
     c = 0

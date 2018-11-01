@@ -10,7 +10,7 @@ def check(user):
         return redirect("/accounts/login")
 
     if user.groups.count() == 1:
-        raise Http404()
+        return redirect("/accounts/pending")
 
     user_group = user.groups.values('name')
     c = 0
@@ -35,6 +35,7 @@ def approval(request):
     user = request.user
     if check(user):
         return check(user)
+
     if request.method == 'POST':
         form = request.POST
         acc1 = Account.objects.get(pk=int(form['sen_acc']))
