@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e2b53bc9-a0ac-4d79-9549-ed6f554933bf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bank/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/bank/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/customer/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/templates/customer/pki.html" beforeDir="false" afterPath="$PROJECT_DIR$/customer/templates/customer/pki.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/customer/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/customer/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/customer/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/employee/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/employee/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/home/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/home/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manager/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/manager/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -81,15 +73,15 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/customer/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="215" column="30" lean-forward="true" selection-start-line="215" selection-start-column="30" selection-end-line="215" selection-end-column="30" />
+            <state relative-caret-position="157">
+              <caret line="42" lean-forward="true" selection-start-line="42" selection-end-line="42" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
-                <marker date="1541090843388" expanded="true" signature="5993:7052" ph="..." />
-                <marker date="1541090843388" expanded="true" signature="7075:7080" ph="..." />
+                <marker date="1541091508831" expanded="true" signature="5993:7051" ph="..." />
+                <marker date="1541091508831" expanded="true" signature="7074:7079" ph="..." />
               </folding>
             </state>
           </provider>
@@ -107,11 +99,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/employee/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="19" column="16" lean-forward="true" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="16" />
+            <state relative-caret-position="45">
+              <caret line="7" column="16" lean-forward="true" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -260,8 +252,8 @@
         <option value="$PROJECT_DIR$/customer/templates/customer/verification_failed.html" />
         <option value="$PROJECT_DIR$/customer/templates/customer/verification_success.html" />
         <option value="$PROJECT_DIR$/manager/views.py" />
-        <option value="$PROJECT_DIR$/customer/views.py" />
         <option value="$PROJECT_DIR$/employee/views.py" />
+        <option value="$PROJECT_DIR$/customer/views.py" />
       </list>
     </option>
   </component>
@@ -293,6 +285,11 @@
               <item name="FCS" type="b2602c69:ProjectViewProjectNode" />
               <item name="FCS" type="462c0819:PsiDirectoryNode" />
               <item name="bank" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FCS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FCS" type="462c0819:PsiDirectoryNode" />
+              <item name="customer" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="FCS" type="b2602c69:ProjectViewProjectNode" />
@@ -712,18 +709,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/customer/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="215" column="30" lean-forward="true" selection-start-line="215" selection-start-column="30" selection-end-line="215" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-            <marker date="1541090843388" expanded="true" signature="5993:7052" ph="..." />
-            <marker date="1541090843388" expanded="true" signature="7075:7080" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/manager/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="201">
@@ -736,8 +721,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/employee/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="19" column="16" lean-forward="true" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="16" />
+        <state relative-caret-position="45">
+          <caret line="7" column="16" lean-forward="true" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/customer/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="42" lean-forward="true" selection-start-line="42" selection-end-line="42" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+            <marker date="1541091508831" expanded="true" signature="5993:7051" ph="..." />
+            <marker date="1541091508831" expanded="true" signature="7074:7079" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>

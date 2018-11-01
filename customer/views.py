@@ -219,7 +219,6 @@ def tranfer_pki(request):
         return render(request, 'customer/verification_failed.html')
 
 
-
 def edit_prof(request):
     user = request.user
     if check(user):
