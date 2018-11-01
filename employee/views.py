@@ -2,8 +2,7 @@ from django.http import Http404
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from home.choices import R_MAP
-from bank.models import Account
-from .models import Trans
+from bank.models import Account,Transaction,Deposit, Withdraw, Pending, Profile
 
 
 def check(user):
@@ -32,25 +31,22 @@ def index(request):
 def approval(request):
     if request.method == 'POST':
         form = request.POST
-
-        user1 = User.objects.get(username=form['u_id'])
-        user2 = User.objects.get(username=form['r_id'])
-        acc1 = Account.objects.get(owner=user1)
-        acc2 = Account.objects.get(owner=user2)
-        acc2.balance += acc1.balance
-        acc1.balance = 0
+        acc1 = Account.objects.get(pk=int(form['sen_acc']))
+        acc2 = Account.objects.get(pk=int(form['rec_acc']))
+        amount = int(form['amount'])
+        acc2.balance += amount
+        acc1.balance -= amount
         acc1.save()
         acc2.save()
-        Trans.objects.filter(trans_id=form['tr_id']).delete()
+        Transaction.objects.filter(pk = int(form['pkk'])).delete()
 
     user = request.user
     if check(user):
         return check(user)
-    reqs = Trans.objects.filter(owner=user).values()
+    reqs = Transaction.objects.all()
     reques = []
     for acc in reqs:
-        print(acc)
-        reques.append((acc['trans_id'], acc['u_id'], acc['r_id']))
+        reques.append((acc.sender, acc.sender_acc.id, acc.receiver, acc.receiver_acc.id, acc.amount,acc.pk))
 
     name = request.user.first_name + " " + request.user.last_name
     return render(request, 'employee/transactions.html', {'req': reques, 'name': name})
@@ -59,15 +55,14 @@ def approval(request):
 def removal(request):
     if request.method == 'POST':
         form = request.POST
-        Trans.objects.filter(trans_id=form['tr_id']).delete()
-
+        Transaction.objects.filter(pk = int(form['pkk'])).delete()    
     user = request.user
     if check(user):
         return check(user)
-    reqs = Trans.objects.filter(owner=user).values()
+    reqs = Transaction.objects.all()
     reques = []
     for acc in reqs:
-        reques.append((acc['trans_id'], acc['u_id'], acc['r_id']))
+        reques.append((acc.sender, acc.sender_acc.id, acc.receiver, acc.receiver_acc.id, acc.amount,acc.pk))
 
     name = request.user.first_name + " " + request.user.last_name
     return render(request, 'employee/removal.html', {'req': reques, 'name': name})
@@ -77,14 +72,12 @@ def vew(request):
     user = request.user
     if check(user):
         return check(user)
-
-    reqs = Trans.objects.filter(owner=user).values()
+    reqs = Transaction.objects.all()
     reques = []
     for acc in reqs:
-        reques.append((acc['trans_id'], acc['u_id'], acc['r_id']))
+        reques.append((acc.sender, acc.sender_acc.id, acc.receiver, acc.receiver_acc.id, acc.amount,acc.pk))
 
     name = request.user.first_name + " " + request.user.last_name
-    print()
     return render(request, 'employee/view.html', {'req': reques, 'name': name})
 
 
@@ -109,8 +102,76 @@ def acc_pen(request):
     print(reqs)
     for acc in reqs:
         if acc.pending:
-            print(acc.acc_num, acc.balance)
-            reques.append((acc.acc_num, acc.balance))
+            print(acc.pk, acc.balance)
+            reques.append((acc.pk, acc.balance))
 
     name = request.user.first_name + " " + request.user.last_name
     return render(request, 'employee/account_pending.html', {'req': reques, 'name': name})
+
+def withdraw(request):
+
+    if request.method == 'POST':
+        form = request.POST
+        acc1 = Account.objects.get(pk=int(form['own_acc']))
+        amount = int(form['amount'])
+        acc1.balance -= amount
+        acc1.save()
+        Withdraw.objects.filter(pk = int(form['pkk'])).delete()
+
+    user = request.user
+    if check(user):
+        return check(user)
+    reqs = Withdraw.objects.all()
+    reques = []
+    for acc in reqs:
+        reques.append((acc.owner, acc.owner_acc.id, acc.amount, acc.pk))
+
+    name = request.user.first_name + " " + request.user.last_name
+    return render(request, 'employee/withdraw.html', {'req': reques, 'name': name})
+
+def deposit(request):
+    if request.method == 'POST':
+        form = request.POST
+        acc1 = Account.objects.get(pk=int(form['own_acc']))
+        amount = int(form['amount'])
+        acc1.balance += amount
+        acc1.save()
+        Deposit.objects.filter(pk = int(form['pkk'])).delete()
+
+    user = request.user
+    if check(user):
+        return check(user)
+    reqs = Deposit.objects.all()
+    reques = []
+    for acc in reqs:
+        reques.append((acc.owner, acc.owner_acc.id, acc.amount, acc.pk))
+
+    name = request.user.first_name + " " + request.user.last_name
+    return render(request, 'employee/deposit.html', {'req': reques, 'name': name})
+
+
+
+def modify(request):
+    if request.method == 'POST':
+        form = request.POST
+        user = User.objects.get(username = form['user'])
+        pending = Pending.objects.get(user = user)
+        new_profile = Profile.objects.get(user = user)
+        new_profile.mobile_number = pending.mobile_number
+        user.first_name = pending.first_name
+        user.last_name = pending.last_name
+        user.email = pending.email_address
+        Pending.objects.filter(user = user).delete()
+        user.save()
+        new_profile.save()
+
+    user = request.user
+    if check(user):
+        return check(user)
+    reqs = Pending.objects.all()
+    reques = []
+    for acc in reqs:
+        reques.append((acc.user.username, acc.first_name, acc.last_name, acc.email_address, acc.mobile_number))
+
+    name = request.user.first_name + " " + request.user.last_name
+    return render(request, 'employee/modify.html', {'req': reques, 'name': name})

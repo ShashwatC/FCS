@@ -25,4 +25,5 @@ class ProfileForm(forms.Form):
     first_name = forms.CharField(max_length=100)
     last_name = forms.CharField(max_length=100)
     email_address = forms.EmailField()
+    choice = forms.IntegerField()
     mobile_number = forms.CharField(max_length=100)

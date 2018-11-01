@@ -1,9 +1,9 @@
 from django.http import Http404
 from django.shortcuts import render, redirect
 from home.choices import R_MAP
-from bank.models import Account,Transaction,Deposit,Withdraw
+from bank.models import Account,Transaction,Deposit,Withdraw,Profile, Pending
 
-from customer.forms import DepositForm, WithdrawForm, TransferForm
+from customer.forms import DepositForm, WithdrawForm, TransferForm, ProfileForm
 from .forms import DetailsForm
 
 
@@ -147,7 +147,21 @@ def transfer_comp(request):
 
 
 def edit_prof(request):
-    return 0
+    if request.method == 'POST':
+        form = ProfileForm(request.POST)
+        user = request.user
+        if form.is_valid():
+            if(Pending.objects.filter(user = user).count()==0):
+                new_pending = Pending.objects.create(user = user)
+                new_pending.first_name = form['first_name'].data
+                new_pending.last_name = form['last_name'].data
+                new_pending.email_address = form['email_address'].data
+                new_pending.mobile_number = form['mobile_number'].data
+                new_pending.save()
+                return render(request, 'customer/edit_prof_done.html')
+    else:
+        form = ProfileForm()
+    return render(request, 'customer/create.html', {'form': form})
 
 
 def create_acc(request):
