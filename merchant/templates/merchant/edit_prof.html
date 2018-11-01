@@ -10,10 +10,10 @@
 {% block content %}
 <p align="midlle">
     
-    <form action="/merchant/transfer_pend" method="post">
+    <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" name="submit" value="Deposit"/>
+        <input type="submit" name="submit" value="submit"/>
     </form>
 
 </p>

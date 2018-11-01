@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User, AbstractUser
 import uuid
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 
 # Create your models here.
@@ -11,7 +12,7 @@ class Account(models.Model):
     id = models.AutoField(primary_key=True)
     acc_num = models.UUIDField(unique=True, editable=False, default=uuid.uuid4)
     owner = models.ForeignKey(User, on_delete="PROTECT")
-    balance = models.FloatField()
+    balance = models.FloatField(validators=[MinValueValidator(0.0)])
     pending = models.BooleanField(default=True)
 
 

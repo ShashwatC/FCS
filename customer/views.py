@@ -118,6 +118,16 @@ def transfer(request):
     F = TransferForm({'account_number': str(acc.id)})
     return render(request, 'customer/transfer.html', {'acc': acc.id, 'form': F})
 
+def transfer2(request):
+    user = request.user
+    if check(user):
+        return check(user)
+    form = request.POST
+    acc = form['id']
+    print(acc)
+    F = TransferForm({'account_to': str(acc)})
+    return render(request, 'customer/merchanttransfer.html', {'form': F})
+
 def transfer_comp(request):
     form = TransferForm(request.POST)
     print("asdjflkajslfjdalkdjflasjdflk")

@@ -13,5 +13,6 @@ urlpatterns = [
     path('withdraw_comp',views.withdraw_comp, name='withdraw_comp'),
     path('create',views.create_acc, name='create'),
     path('edit_prof',views.edit_prof, name='edit_prof'),
+    path('merchanttransfer',views.transfer2,name='transfer2'),
 ]
 

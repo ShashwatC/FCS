@@ -10,11 +10,7 @@
 {% block content %}
 <p align="midlle">
     
-    <form action="/merchant/transfer_pend" method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" name="submit" value="Deposit"/>
-    </form>
+    <h2>Your request has been sent</h2>
 
 </p>
 {% endblock content %}
