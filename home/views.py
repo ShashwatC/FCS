@@ -5,6 +5,7 @@ from django.shortcuts import redirect
 from django.contrib.auth.forms import UserCreationForm
 from home.forms import DetailsForm
 from bank.models import Profile
+from home.pki import get_pair
 
 # Create your views here.
 
@@ -59,9 +60,12 @@ def registration_details(request):
             new_group, created = Group.objects.get_or_create(name=form.cleaned_data.get('choice'))
             user.groups.set([new_group])
             user.save()
-            profile = Profile(user=user, mobile_number=mobile_number, private_key="")
-            profile.save()
             return redirect('/accounts/login_success/')
     else:
-        form = DetailsForm()
+        user = request.user
+        private_key_str, public_key_str = get_pair()
+        if Profile.objects.filter(user=user).count() == 0:
+            profile = Profile(user=user, mobile_number="", private_key=private_key_str)
+            profile.save()
+        form = DetailsForm({'public_key':public_key_str})
     return render(request, 'registration/register_more.html',{'form': form})

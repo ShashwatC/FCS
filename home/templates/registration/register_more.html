@@ -8,7 +8,11 @@
   <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
+  <p> Please copy this key file and store it somewhere safe. This is highly sensitive data, and CAN NOT be reissued for ANY REASON!
+  You will need to provide this key later.
+  </p>
     <button type="submit">Sign up</button>
+
   </form>
     <p> Account will be disabled until approved by sysadmin.</p>
 {% endblock %}
