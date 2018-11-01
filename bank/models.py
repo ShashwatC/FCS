@@ -52,7 +52,6 @@ class Pending(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     email_address = models.EmailField()
-    choice = models.IntegerField()
     mobile_number = models.CharField(max_length=100)
 
 
