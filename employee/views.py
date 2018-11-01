@@ -32,9 +32,6 @@ def index(request):
 
 
 def approval(request):
-    user = request.user
-    if check(user):
-        return check(user)
     if request.method == 'POST':
         form = request.POST
         acc1 = Account.objects.get(pk=int(form['sen_acc']))
@@ -46,6 +43,9 @@ def approval(request):
         acc2.save()
         Transaction.objects.filter(pk = int(form['pkk'])).delete()
 
+    user = request.user
+    if check(user):
+        return check(user)
     reqs = Transaction.objects.all()
     reques = []
     for acc in reqs:
@@ -57,15 +57,12 @@ def approval(request):
 
 
 def removal(request):
-    user = request.user
-    if check(user):
-        return check(user)
-
     if request.method == 'POST':
         form = request.POST
         Transaction.objects.filter(pk = int(form['pkk'])).delete()    
     user = request.user
-
+    if check(user):
+        return check(user)
     reqs = Transaction.objects.all()
     reques = []
     for acc in reqs:
@@ -80,11 +77,10 @@ def vew(request):
     user = request.user
     if check(user):
         return check(user)
-
     reqs = Transaction.objects.all()
     reques = []
     for acc in reqs:
-        if acc.amount <= 100000:
+        if(acc.amount<100000):
             reques.append((acc.sender, acc.sender_acc.id, acc.receiver, acc.receiver_acc.id, acc.amount,acc.pk))
 
     name = request.user.first_name + " " + request.user.last_name
@@ -92,10 +88,6 @@ def vew(request):
 
 
 def acc_pen(request):
-    user = request.user
-    if check(user):
-        return check(user)
-
     if request.method == 'POST':
         form = request.POST
 
@@ -103,6 +95,9 @@ def acc_pen(request):
         acc.pending = False
         acc.save()
 
+    user = request.user
+    if check(user):
+        return check(user)
     reqs = Account.objects.all()
     reques = []
     for acc in reqs:
@@ -112,11 +107,7 @@ def acc_pen(request):
     name = request.user.first_name + " " + request.user.last_name
     return render(request, 'employee/account_pending.html', {'req': reques, 'name': name})
 
-
 def withdraw(request):
-    user = request.user
-    if check(user):
-        return check(user)
 
     if request.method == 'POST':
         form = request.POST
@@ -126,20 +117,19 @@ def withdraw(request):
         acc1.save()
         Withdraw.objects.filter(pk = int(form['pkk'])).delete()
 
+    user = request.user
+    if check(user):
+        return check(user)
     reqs = Withdraw.objects.all()
     reques = []
     for acc in reqs:
-        if acc.amount<100000:
+        if(acc.amount<100000):
             reques.append((acc.owner, acc.owner_acc.id, acc.amount, acc.pk))
 
     name = request.user.first_name + " " + request.user.last_name
     return render(request, 'employee/withdraw.html', {'req': reques, 'name': name})
 
 def deposit(request):
-    user = request.user
-    if check(user):
-        return check(user)
-
     if request.method == 'POST':
         form = request.POST
         acc1 = Account.objects.get(pk=int(form['own_acc']))
@@ -148,10 +138,13 @@ def deposit(request):
         acc1.save()
         Deposit.objects.filter(pk = int(form['pkk'])).delete()
 
+    user = request.user
+    if check(user):
+        return check(user)
     reqs = Deposit.objects.all()
     reques = []
     for acc in reqs:
-        if acc.amount<100000:
+        if(acc.amount<100000):
             reques.append((acc.owner, acc.owner_acc.id, acc.amount, acc.pk))
 
     name = request.user.first_name + " " + request.user.last_name
@@ -159,10 +152,6 @@ def deposit(request):
 
 
 def modify(request):
-    user = request.user
-    if check(user):
-        return check(user)
-
     if request.method == 'POST':
         form = request.POST
         user = User.objects.get(username = form['user'])
@@ -176,6 +165,9 @@ def modify(request):
         user.save()
         new_profile.save()
 
+    user = request.user
+    if check(user):
+        return check(user)
     reqs = Pending.objects.all()
     reques = []
     for acc in reqs:
