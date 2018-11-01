@@ -1,0 +1,28 @@
+{% extends "home/base.html" %}
+
+{% block name %}
+<li><a href = "/merchant">Home</a></li>
+<li><a href = "create">Create Account</a></li>
+<li><a href = "edit_prof">Edit Profile</a></li>
+
+{% endblock name %}
+
+{% block content %}
+<p>
+
+    <table class="table">
+    <tr>
+        <th>Merchant Number</th>
+    </tr>
+    <tr>
+        <td>{{ id }}</td>
+    </tr>
+    </table>
+    <form action="/customer/merchanttransfer" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="id" value="{{ id }}" />
+            <input type="submit" name="submit" value="Pay Merchant"/>
+    </form>
+    
+</p>
+{% endblock content %}
