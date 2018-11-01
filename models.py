@@ -16,6 +16,7 @@ class Account(models.Model):
 
 
 class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     mobile_number = models.CharField(max_length=15)
     private_key = models.CharField(max_length=512)
 
@@ -26,6 +27,7 @@ class Logs(models.Model):
 
 
 class Transaction(models.Model):
+    timestamp = models.DateTimeField()
     sender = models.ForeignKey(User, on_delete="PROTECT", related_name="sender")
     sender_acc = models.ForeignKey(Account, on_delete="PROTECT", related_name="sender_acc")
     receiver = models.ForeignKey(User, on_delete="PROTECT", related_name="receiver")
@@ -33,15 +35,15 @@ class Transaction(models.Model):
     amount = models.PositiveIntegerField()
     pending = models.BooleanField(default=True)
 
-class Withdraw(models.Model):
-    owner = models.ForeignKey(User, on_delete="PROTECT", related_name="owner_w")
-    owner_acc = models.ForeignKey(Account, on_delete="PROTECT", related_name="owner_acc_w")
-    amount = models.PositiveIntegerField()
-    pending = models.BooleanField(default=True)
-
 class Deposit(models.Model):
     owner = models.ForeignKey(User, on_delete="PROTECT", related_name="owner_d")
     owner_acc = models.ForeignKey(Account, on_delete="PROTECT", related_name="owner_acc_d")
+    amount = models.PositiveIntegerField()
+    pending = models.BooleanField(default=True)
+
+class Withdraw(models.Model):
+    owner = models.ForeignKey(User, on_delete="PROTECT", related_name="owner_w")
+    owner_acc = models.ForeignKey(Account, on_delete="PROTECT", related_name="owner_acc_w")
     amount = models.PositiveIntegerField()
     pending = models.BooleanField(default=True)
 
