@@ -6,6 +6,7 @@ from bank.models import Account,Transaction,Deposit,Withdraw,Profile, Pending
 from merchant.forms import DepositForm, WithdrawForm, TransferForm, ProfileForm
 from .forms import DetailsForm
 
+
 def check(user):
     """
     Functionality:
@@ -35,6 +36,7 @@ def check(user):
     if not c:
         raise Http404()
 
+
 # Create your views here.
 def index(request):
     user = request.user
@@ -63,6 +65,7 @@ def account(request):
 
     return render(request, 'merchant/account.html', {'acc': [(acc.id,acc.balance)], 'name': name})
 
+
 def deposit(request):
     user = request.user
     if check(user):
@@ -74,6 +77,7 @@ def deposit(request):
     F = DepositForm({'account_number': str(acc.id)})
     return render(request, 'merchant/deposit.html', {'acc': acc.id, 'form': F})
 
+
 def deposit_comp(request):
     user = request.user
     if check(user):
@@ -84,9 +88,6 @@ def deposit_comp(request):
     acc1 = Account.objects.get(id = i1)
     bal = int(form['amount'].data)
     user1 = request.user
-    if bal<0:
-        print("not valid")    #asdfaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-
     new_deposit = Deposit.objects.create(owner = user1, owner_acc = acc1, amount = bal)
     new_deposit.save()
 
@@ -104,6 +105,7 @@ def withdraw(request):
     form = WithdrawForm({'account_number': str(acc.id)})
     return render(request, 'merchant/withdraw.html', {'acc': acc.id, 'form': form})
 
+
 def withdraw_comp(request):
     user = request.user
     if check(user):
@@ -114,8 +116,8 @@ def withdraw_comp(request):
     acc1 = Account.objects.get(id = i1)
     bal = int(form['amount'].data)
     user1 = request.user
-    if(bal>acc1.balance):
-        print("not valid")    #asdfaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+    if bal>acc1.balance:
+        return render(request,'merchant/insufficient.html')
     
     cond = 0
     if(bal<10000):
@@ -146,7 +148,6 @@ def transfer_comp(request):
         return check(user)
 
     form = TransferForm(request.POST)
-    print("asdjflkajslfjdalkdjflasjdflk")
     print(type(form['account_number']))
     i1 = int(form['account_number'].data)
     i2 = int(form['account_to'].data)
@@ -155,11 +156,12 @@ def transfer_comp(request):
     bal = int(form['amount'].data)
     user1 = request.user
     user2 = acc2.owner
-    if(bal<0):
-        print("not valid")    #asdfaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+
+    if bal>acc1.balance:
+        return render(request,'merchant/insufficient.html')
 
     cond = 0    
-    if(bal<10000):
+    if bal<10000:
         acc1.balance -= bal
         acc2.balance += bal
         acc1.save()
