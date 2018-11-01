@@ -2,7 +2,7 @@ from django.http import Http404
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from home.choices import R_MAP
-from bank.models import Account,Transaction,Deposit, Withdraw
+from bank.models import Account,Transaction,Deposit, Withdraw, Pending, Profile
 
 
 def check(user):
@@ -148,3 +148,29 @@ def deposit(request):
 
     name = request.user.first_name + " " + request.user.last_name
     return render(request, 'employee/deposit.html', {'req': reques, 'name': name})
+
+
+def modify(request):
+    if request.method == 'POST':
+        form = request.POST
+        user = User.objects.get(username = form['user'])
+        pending = Pending.objects.get(user = user)
+        new_profile = Profile.objects.get(user = user)
+        new_profile.mobile_number = pending.mobile_number
+        user.first_name = pending.first_name
+        user.last_name = pending.last_name
+        user.email = pending.email_address
+        Pending.objects.filter(user = user).delete()
+        user.save()
+        new_profile.save()
+
+    user = request.user
+    if check(user):
+        return check(user)
+    reqs = Pending.objects.all()
+    reques = []
+    for acc in reqs:
+        reques.append((acc.user.username, acc.first_name, acc.last_name, acc.email_address, acc.mobile_number))
+
+    name = request.user.first_name + " " + request.user.last_name
+    return render(request, 'employee/modify.html', {'req': reques, 'name': name})
