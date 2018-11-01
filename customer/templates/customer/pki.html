@@ -6,16 +6,10 @@
 {% block content %}
   <h3>Due to this very high value transaction, you will need to prove possession of the key you were given at sign up</h3>
     To do that, you need to encrypt your payment amount with your private key using RSA with OAEP (SHA1 And MGF1 Padding)
-
   <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-  <p> Please copy this key file and store it somewhere safe. This is highly sensitive data,
-      and if you lose it, we cannot recover it for you (we don't store your key in our database, only
-      the key pair)
-  </p>
-    <button type="submit">Sign up</button>
+    <button type="submit">Submit Challenge Response</button>
 
   </form>
-    <p> Account will be disabled until approved by sysadmin.</p>
 {% endblock %}
