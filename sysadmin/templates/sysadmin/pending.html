@@ -1,5 +1,16 @@
 {% extends "home/base.html" %}
 
+{% block name %}
+
+<li><a href="view"> View transactions </a></li>
+<li><a href="pending"> Approval for accounts </a></li>
+<li><a href="removal"> Remove Account </a></li>
+<li><a href="modify"> Modify details </a></li>
+
+{% endblock name %}
+
+
+
 {% block content %}
     {% for user,group in user_groups %}
         <b>{{ user }}</b> has group <b>{{ group }}</b>

@@ -1,0 +1,35 @@
+{% extends "home/base.html" %}
+
+{% block name %}
+<li><a href="view"> View transactions </a></li>
+<li><a href="pending"> Approval for User </a></li>
+<li><a href="removal"> Remove Account </a></li>
+<li><a href="approv"> Approve Accounts </a></li>
+
+{% block content %}
+<p>
+
+    <table class="table">
+    <tr>
+        <th>User</th>
+        <th>Type</th>
+    </tr>
+    {% for user,user_type in req %}
+    <tr>
+        <td>{{ user }}</td>
+        <td>{{ user_type }}</td>
+        <td>
+            <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="user" value="{{ user }}" />
+                <input type="hidden" name="user_type" value="{{ user_type }}" />
+                <input type="submit" value="remove"/>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+    </table>
+
+
+</p>
+{% endblock content %}
