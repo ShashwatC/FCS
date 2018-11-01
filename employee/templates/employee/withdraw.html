@@ -9,6 +9,7 @@
 <li><a href="deposit"> Deposit Approval </a></li>
 <li><a href="withdraw"> Withdraw Approval </a></li>
 
+
 {% endblock name %}
 
 {% block content %}
@@ -16,29 +17,23 @@
 
     <table class="table">
     <tr>
-        <th>Sender</th>
-        <th>Sender account</th>
-        <th>Receiver</th>
-        <th>Receiver account</th>
+        <th>Owner</th>
+        <th>Owner account</th>
         <th>Amount</th>
     </tr>
-    {% for sen,sen_acc,rec,rec_acc,amount,pkk in req %}
+    {% for own,own_acc,amount,pkk in req %}
     <tr>
-        <td>{{ sen }}</td>
-        <td>{{ sen_acc }}</td>
-        <td>{{ rec }}</td>
-        <td>{{ rec_acc }}</td>
+        <td>{{ own }}</td>
+        <td>{{ own_acc }}</td>
         <td>{{ amount }}</td>
         <td>
             <form method="post">
                 {% csrf_token %}
-                <input type="hidden" name="sen" value="{{ sen }}" />
-                <input type="hidden" name="sen_acc" value="{{ sen_acc }}" />
-                <input type="hidden" name="rec" value="{{ rec }}" />
-                <input type="hidden" name="rec_acc" value="{{ rec_acc }}" />
+                <input type="hidden" name="own" value="{{ own }}" />
+                <input type="hidden" name="own_acc" value="{{ own_acc }}" />
                 <input type="hidden" name="amount" value="{{ amount }}" />
                 <input type="hidden" name="pkk" value="{{ pkk }}" />
-                <input type="submit" value="Remove"/>
+                <input type="submit" value="Approve"/>
             </form>
         </td>
     </tr>

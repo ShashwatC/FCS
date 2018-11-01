@@ -10,5 +10,12 @@ urlpatterns = [
     path('removal', views.removal, name = 'removal'),
     path('modify', views.modify, name = 'modify'),
     path('account_pending', views.acc_pen, name = 'acc_pen'),
+    path('withdraw', views.withdraw, name = 'withdraw'),
+    path('deposit', views.deposit, name = 'deposit'),
+    path('modify', views.deposit, name = 'deposit'),
+    
+
+
+    
 ]
 
