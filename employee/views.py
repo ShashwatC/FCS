@@ -45,13 +45,16 @@ def approval(request):
         acc1.balance -= amount
         acc1.save()
         acc2.save()
-        Transaction.objects.filter(pk = int(form['pkk'])).delete()
+        wi = Transaction.objects.get(pk = int(form['pkk']))
+        wi.pending = False
+        wi.save()
 
     reqs = Transaction.objects.all()
     reques = []
     for acc in reqs:
         if(acc.amount<100000):
-            reques.append((acc.sender, acc.sender_acc.id, acc.receiver, acc.receiver_acc.id, acc.amount,acc.pk))
+            if(acc.pending==True):
+                reques.append((acc.sender, acc.sender_acc.id, acc.receiver, acc.receiver_acc.id, acc.amount,acc.pk))
 
     name = request.user.first_name + " " + request.user.last_name
     return render(request, 'employee/transactions.html', {'req': reques, 'name': name})
@@ -64,14 +67,17 @@ def removal(request):
 
     if request.method == 'POST':
         form = request.POST
-        Transaction.objects.filter(pk = int(form['pkk'])).delete()    
+        wi = Transaction.objects.get(pk = int(form['pkk']))
+        wi.pending = False
+        wi.save()   
     user = request.user
 
     reqs = Transaction.objects.all()
     reques = []
     for acc in reqs:
         if(acc.amount<100000):
-            reques.append((acc.sender, acc.sender_acc.id, acc.receiver, acc.receiver_acc.id, acc.amount,acc.pk))
+            if(acc.pending==True):
+                reques.append((acc.sender, acc.sender_acc.id, acc.receiver, acc.receiver_acc.id, acc.amount,acc.pk))
 
     name = request.user.first_name + " " + request.user.last_name
     return render(request, 'employee/removal.html', {'req': reques, 'name': name})
@@ -86,7 +92,8 @@ def vew(request):
     reques = []
     for acc in reqs:
         if acc.amount <= 100000:
-            reques.append((acc.sender, acc.sender_acc.id, acc.receiver, acc.receiver_acc.id, acc.amount,acc.pk))
+            if(acc.pending==True):
+                reques.append((acc.sender, acc.sender_acc.id, acc.receiver, acc.receiver_acc.id, acc.amount,acc.pk))
 
     name = request.user.first_name + " " + request.user.last_name
     return render(request, 'employee/view.html', {'req': reques, 'name': name})
@@ -125,13 +132,16 @@ def withdraw(request):
         amount = int(form['amount'])
         acc1.balance -= amount
         acc1.save()
-        Withdraw.objects.filter(pk = int(form['pkk'])).delete()
+        wi = Withdraw.objects.get(pk = int(form['pkk']))
+        wi.pending = False
+        wi.save()
 
     reqs = Withdraw.objects.all()
     reques = []
     for acc in reqs:
         if acc.amount<100000:
-            reques.append((acc.owner, acc.owner_acc.id, acc.amount, acc.pk))
+            if(acc.pending==True):
+                reques.append((acc.owner, acc.owner_acc.id, acc.amount, acc.pk))
 
     name = request.user.first_name + " " + request.user.last_name
     return render(request, 'employee/withdraw.html', {'req': reques, 'name': name})
@@ -147,13 +157,16 @@ def deposit(request):
         amount = int(form['amount'])
         acc1.balance += amount
         acc1.save()
-        Deposit.objects.filter(pk = int(form['pkk'])).delete()
+        wi = Deposit.objects.get(pk = int(form['pkk']))
+        wi.pending = False
+        wi.save()
 
     reqs = Deposit.objects.all()
     reques = []
     for acc in reqs:
         if acc.amount<100000:
-            reques.append((acc.owner, acc.owner_acc.id, acc.amount, acc.pk))
+            if(acc.pending==True):
+                reques.append((acc.owner, acc.owner_acc.id, acc.amount, acc.pk))
 
     name = request.user.first_name + " " + request.user.last_name
     return render(request, 'employee/deposit.html', {'req': reques, 'name': name})

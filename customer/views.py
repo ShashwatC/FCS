@@ -117,6 +117,9 @@ def withdraw_comp(request):
     if not form.is_valid():
         return render(request, 'customer/withdraw.html', {'acc': acc1.id, 'form': form})
 
+    if(acc1.balance<bal):
+    	return render(request,"customer/transaction_failed.html")
+
     cond = 0
     if bal < 10000:
         new_withdraw = Withdraw.objects.create(owner=user1, owner_acc=acc1, amount=bal, pending=False)
@@ -176,14 +179,24 @@ def transfer_comp(request):
 
     cond = 0
 
+    if(acc1.balance<bal):
+    	return render(request,"customer/transaction_failed.html")
+
     if bal < 10000:
         new_transaction = Transaction.objects.create(sender=user1, sender_acc=acc1, receiver=user2, receiver_acc=acc2,
                                                      amount=bal, pending=False)
         new_transaction.save()
+     
         acc1.balance -= bal
         acc2.balance += bal
+        
         acc1.save()
         acc2.save()
+    elif bal <= 100000:
+    	new_transaction = Transaction.objects.create(sender=user1, sender_acc=acc1, receiver=user2, receiver_acc=acc2,
+                                                     amount=bal, pending=True)
+    	new_transaction.save()
+
     elif bal <= 10000000:
         OTP = generateOTP(6)
         message = "OTP: " + OTP
