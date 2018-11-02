@@ -86,9 +86,13 @@ def view_trans(request):
     if check(user):
         return check(user)
 
-    all_trans = Transaction.objects.all()
-    all_withdraw = Withdraw.objects.all()
-    all_deposit = Deposit.objects.all()
+    a = []
+    b = []
+    c = []
+    all_trans = Transaction.objects.all().values_list()
+    all_withdraw = Withdraw.objects.all().values_list()
+    all_deposit = Deposit.objects.all().values_list()
+    
     return render(request, 'sysadmin/view.html', { 'trans': all_trans, 'withdraw' : all_withdraw, 'depoit' : all_deposit})
 
 def acc_pen(request):

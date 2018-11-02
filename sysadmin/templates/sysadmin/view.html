@@ -21,7 +21,7 @@
         <th>Receiver's account</th>
         <th>Amount</th>
     </tr>
-    {% for tim,sen,sen_acc,rec,rec_acc,amo in trans %}
+    {% for pk,tim,sen,sen_acc,rec,rec_acc,amo,pen in trans %}
     <tr>
         <td>{{ tim }}</td>
         <td>{{ sen }}</td>
@@ -40,14 +40,12 @@
 <h2>Withdrawl</h2>
     <table class="table">
     <tr>
-        <th>Time</th>
         <th>Owner</th>
         <th>Owner's account</th>
         <th>Amount</th>
     </tr>
-    {% for tim,sen,sen_acc,amo in trans %}
+    {% for pk,sen,sen_acc,amo,pen in withdraw %}
     <tr>
-        <td>{{ tim }}</td>
         <td>{{ sen }}</td>
         <td>{{ sen_acc }}</td>
         <td>{{ amo }}</td>
@@ -62,14 +60,12 @@
 <h2>Deposits</h2>
     <table class="table">
     <tr>
-        <th>Time</th>
         <th>Owner</th>
         <th>Owner's account</th>
         <th>Amount</th>
     </tr>
-    {% for tim,sen,sen_acc,amo in trans %}
+    {% for pk,sen,sen_acc,amo,pen in depoit %}
     <tr>
-        <td>{{ tim }}</td>
         <td>{{ sen }}</td>
         <td>{{ sen_acc }}</td>
         <td>{{ amo }}</td>
